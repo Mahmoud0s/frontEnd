@@ -3,25 +3,14 @@ function popUpFun(el) {
     el.classList.toggle("showMe");
 }
 
-let btn = document.getElementsByClassName("section-list")[0];
 let sendBtn = document.getElementById("SendBtn");
-let popUpCloseBtn = document.getElementById("ColseBtn"); 
 let createPopUp = document.getElementById("create-WS-popUp");
 let updatePopUp = document.getElementById("update-WS-popUp");
 const content = document.querySelector(".add-user .content");
 
 
-// Event listeners for closing popups on double-click
-createPopUp.addEventListener("dblclick", () => {
-    createPopUp.classList.remove("showMe");
-});
-updatePopUp.addEventListener("dblclick", () => {
-    updatePopUp.classList.remove("showMe");
-});
-
-// Event listeners for toggling popups
+let btn = document.getElementsByClassName("section-list")[0];
 btn.addEventListener("click", () => { popUpFun(createPopUp); });
-popUpCloseBtn.addEventListener("click", () => { popUpFun(createPopUp); });
 
 // Function to populate update form
 function popUpFunUpdate(rowData) {
@@ -105,9 +94,7 @@ function confirmWS(rowData) {
     });
 }
 
-deletePopUp.addEventListener("dblclick", () => {
-    deletePopUp.classList.remove("showMe");
-});
+
 
 async function deleteWS(userId, row) {
     try {
@@ -135,7 +122,7 @@ async function getAllData() {
     const content = document.querySelector(".add-user .content");
     const response = await fetch("/api/work-sections");
     const data = await response.json();
-
+    
     if (data.length) {
         const keys = Object.keys(data[0]);
         const table = document.createElement("table");
@@ -157,7 +144,11 @@ async function getAllData() {
             const row = tbody.insertRow();
             keys.forEach(key => {
                 const cell = row.insertCell();
-                cell.textContent = rowData[key];
+                
+                if(key=="created_at")
+                    cell.textContent = `${rowData[key].date} ${rowData[key].time }`;
+                else
+                    cell.textContent = rowData[key];
             });
 
             const actionCell = row.insertCell();

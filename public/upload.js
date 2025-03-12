@@ -40,3 +40,9 @@ document.getElementById('upload-button').addEventListener('click', async functio
         alert('Please select a file to upload.');
     }
 });
+function checkUser(){
+    localStorage.getItem("user") == "true" ? "" : location.href="/login"
+}
+
+
+document.addEventListener("DOMContentLoaded", checkUser);

@@ -43,6 +43,12 @@ loginForm.addEventListener("submit", async (e) => {
                     localStorage.removeItem("userName");
                     localStorage.removeItem("password");
                 }
+                // Cookies.set('username',userName.value, {
+                //     expires: 7, // Expires in 7 days
+                //     secure: true,
+                //     sameSite: 'strict'
+                // });
+                localStorage.setItem("user",true)
                 if(data.role=="admin"){
                     window.location.href = "/adminDashBoard";
                 }else{

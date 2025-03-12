@@ -60,12 +60,6 @@ a{
     color: var(--color-dark);
 }
 
-img{
-    display: block;
-    width: 100%;
-    object-fit: cover;
-}
-
 h1{
     font-weight: 800;
     font-size: 1.8rem;
@@ -232,7 +226,7 @@ main{
 
 main .analyse{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1.6rem;
 }
 
@@ -309,6 +303,10 @@ main .analyse .progresss .percentage{
     width: 100%;
 }
 
+.analyse i{
+    font-size: 40px;
+    padding-right:10px;
+}
 main .new-section{
     margin-top: 1.3rem;
 }
@@ -494,29 +492,29 @@ main .add-user a{
     margin-bottom: 0.2rem;
 }
 
-.right-section .reminders{
-    margin-top: 2rem;
+.right-section .allWsInfo{
+    margin-top: 1rem;
 }
 
-.right-section .reminders .header{
+.right-section .allWsInfo .header{
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0.8rem;
 }
 
-.right-section .reminders .header span{
+.right-section .allWsInfo .header span{
     padding: 10px;
     box-shadow: var(--box-shadow);
     background-color: var(--color-white);
     border-radius: 50%;
 }
 
-.right-section .reminders .notification{
+.right-section .allWsInfo .WSInfo{
     background-color: var(--color-white);
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     margin-bottom: 0.7rem;
     padding: 1.4rem var(--card-padding);
     border-radius: var(--border-radius-2);
@@ -525,11 +523,11 @@ main .add-user a{
     transition: all 0.3s ease;
 }
 
-.right-section .reminders .notification:hover{
+.right-section .allWsInfo .WSInfo:hover{
     box-shadow: none;
 }
 
-.right-section .reminders .notification .content{
+.right-section .allWsInfo .WSInfo .content{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -537,19 +535,22 @@ main .add-user a{
     width: 100%;
 }
 
-.right-section .reminders .notification .icon{
+.right-section .allWsInfo .WSInfo .icon{
     padding: 0.6rem;
     color: var(--color-white);
-    background-color: var(--color-success);
+    background-color: var(--color-dark);
     border-radius: 20%;
     display: flex;
 }
 
-.right-section .reminders .notification.deactive .icon{
+.right-section .allWsInfo .WSInfo.deactive .icon{
     background-color: var(--color-danger);
 }
+.right-section .allWsInfo .WSInfo .icon i{
+    font-size: 40px;
+}
 
-.right-section .reminders .add-reminder{
+.right-section .allWsInfo .add-reminder{
     background-color: var(--color-white);
     border: 2px dashed var(--color-primary);
     color: var(--color-primary);
@@ -559,12 +560,12 @@ main .add-user a{
     cursor: pointer;
 }
 
-.right-section .reminders .add-reminder:hover{
+.right-section .allWsInfo .add-reminder:hover{
     background-color: var(--color-primary);
     color: white;
 }
 
-.right-section .reminders .add-reminder div{
+.right-section .allWsInfo .add-reminder div{
     display: flex;
     align-items: center;
     gap: 0.6rem;
@@ -588,14 +589,9 @@ main .add-user a{
         width: 5.6rem;
     }
 
-    aside .sidebar a:last-child{
-        position: relative;
-        margin-top: 1.8rem;
-    }
 
     main .analyse{
-        grid-template-columns: 1fr;
-        gap: 0;
+        gap: 20px;
     }
 
     main .new-section .section-list .user{
@@ -614,15 +610,6 @@ main .add-user a{
         width: 83vw;
     }
 
-    main table thead tr th:last-child,
-    main table thead tr th:first-child{
-        display: none;
-    }
-
-    main table tbody tr td:last-child,
-    main table tbody tr td:first-child{
-        display: none;
-    }
 
 }
 
@@ -666,11 +653,6 @@ main .add-user a{
     aside .sidebar a{
         width: 100%;
         height: 3.4rem;
-    }
-
-    aside .sidebar a:last-child{
-        position: absolute;
-        bottom: 5rem;
     }
 
     aside .toggle .close{
@@ -752,8 +734,16 @@ main .add-user a{
     flex-direction: column;
     text-transform: capitalize;
     padding: 20px;
+    position: relative;
 }
-
+.close_btn{
+    position: absolute;
+    z-index: 1;
+    font-size: 20px;
+    top: 13px;
+    right: 20px;
+    cursor: pointer;
+}
 /* Initial state of the popup */
 .pop-up{
     z-index: 1;    
@@ -799,9 +789,7 @@ main .add-user a{
     margin: 0 10px;
     border: 1px solid;
     color: var(--color-dark-variant);
-}
-.popup-content form div:last-of-type input:last-of-type{
-    color: var(--color-danger);
+    width: 100%
 }
   .popup-content form div:last-of-type input:hover {
     background-color: black;
@@ -899,6 +887,10 @@ input[name='ID']{
     pointer-events: none;
     opacity: 0.4;
 
+}
+#image-preview {
+    max-width: 100%;
+    max-height: 100%;
 }
 /* .files{
     padding: 20px;

@@ -1,27 +1,15 @@
 
-// Toggle class function
-function popUpFun(el) {
-    el.classList.toggle("showMe");
-}
-
 let btn = document.getElementsByClassName("section-list")[0];
 let sendBtn = document.getElementById("SendBtn");
-let popUpCloseBtn = document.getElementById("ColseBtn"); 
 let createPopUp = document.getElementById("create-user-popUp");
 let updatePopUp = document.getElementById("update-user-popUp");
 
 
-// Event listeners for closing popups on double-click
-createPopUp.addEventListener("dblclick", () => {
-    createPopUp.classList.remove("showMe");
-});
-updatePopUp.addEventListener("dblclick", () => {
-    updatePopUp.classList.remove("showMe");
-});
+
 
 // Event listeners for toggling popups
 btn.addEventListener("click", () => { popUpFun(createPopUp); });
-popUpCloseBtn.addEventListener("click", () => { popUpFun(createPopUp); });
+
 
 
 
@@ -97,6 +85,7 @@ let confirm = deletePopUp.querySelector("input[value='confirm']");
 let msgwarning = deletePopUp.querySelector("#msgwarning");
 
 
+
 confirm.addEventListener("click", () => {
     deleteUserAction();
 });
@@ -117,9 +106,6 @@ function confirmUser(rowData) {
     });
 }
 
-deletePopUp.addEventListener("dblclick", () => {
-    deletePopUp.classList.remove("showMe");
-});
 
 async function deleteUser(userId, row) {
     try {

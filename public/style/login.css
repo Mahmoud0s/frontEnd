@@ -237,15 +237,6 @@ body {
     color: gray;
     font-size: 15px;
 }
-/* #loading{
-    display: block;
-    font-size: 35px;
-    color: white;
-    text-align: center;
-    transition: 1s;
-    animation: load infinite 0.5s;
-} */
-
 
 #loading{
     display: flex;
@@ -259,8 +250,7 @@ body {
     width: 15px;
     height: 15px;
     margin: 1px;
-    background-color: blueviolet;
-    /* border: 1px white solid; */
+    background-color: #fff;
     border-radius: 50%;
     animation-name: loading;
     animation-duration: 1s;
@@ -277,9 +267,7 @@ body {
 
 @keyframes loading{
     to{
-        background-color: white;
-        color: white;
-        /* border:10px white solid; */
+        background-color: #444243;
         transform:translateY(-20px);
         opacity: 0.5;
     }
