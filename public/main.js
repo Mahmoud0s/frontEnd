@@ -44,7 +44,7 @@ loginForm.addEventListener("submit", async (e) => {
                     localStorage.removeItem("password");
                 }
                 // Cookies.set('username',userName.value, {
-                //     expires: 7, // Expires in 7 days
+                //     expires: 7, 
                 //     secure: true,
                 //     sameSite: 'strict'
                 // });
