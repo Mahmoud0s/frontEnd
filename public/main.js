@@ -20,7 +20,6 @@ loginForm.addEventListener("submit", async (e) => {
         password: password.value
     };
     lodingForm.classList.toggle("hideMe");
-    setTimeout(async ()=>{
         try {
             const response = await fetch("/api/auth/login", {
                 method: "POST",
@@ -63,6 +62,6 @@ loginForm.addEventListener("submit", async (e) => {
             message.textContent = "An error occurred. Please try again.";
             message.style.color = "red";
         }
-    }, 3000);
+
 })
     
