@@ -10,9 +10,12 @@ app.use(cookieParser())
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended:false}))
-// Routes
+
 app.use('/adminDashBoard', express.static(path.join(__dirname, 'public/adminDashBoard')));
 
+app.get("/",(req,res)=>{
+    res.redirect("/home")
+})
 app.get("/home",(req,res)=>{
     res.render("search.ejs")
 })
@@ -25,11 +28,14 @@ app.get("/upload",(req,res)=>{
 app.get("/search/work-section/:WSId",(req,res)=>{
     res.render("folder.ejs")
 })
-app.get("/adminDashBoard/",(req,res)=>{        
+app.get("/search/:imgId",(req,res)=>{
+    res.render("preview-image.ejs")
+})
+app.get("/adminDashBoard/",checkToken.authenticateUser,(req,res)=>{        
     res.render("dashboardAdmin/dashboard.ejs")    
 })
 
-app.get("/adminDashBoard/workSection",(req,res)=>{    
+app.get("/adminDashBoard/workSection",checkToken.authenticateUser,(req,res)=>{    
     res.render("dashboardAdmin/workSection.ejs")    
 })
 
