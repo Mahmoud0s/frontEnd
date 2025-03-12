@@ -31,11 +31,11 @@ app.get("/search/work-section/:WSId",(req,res)=>{
 app.get("/search/:imgId",(req,res)=>{
     res.render("preview-image.ejs")
 })
-app.get("/adminDashBoard/",checkToken.authenticateUser,(req,res)=>{        
+app.get("/adminDashBoard/",(req,res)=>{        
     res.render("dashboardAdmin/dashboard.ejs")    
 })
 
-app.get("/adminDashBoard/workSection",checkToken.authenticateUser,(req,res)=>{    
+app.get("/adminDashBoard/workSection",(req,res)=>{    
     res.render("dashboardAdmin/workSection.ejs")    
 })
 
