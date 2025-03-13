@@ -49,7 +49,7 @@ closePopUpBtn.forEach(ele => {
 
 
 async function getData(){
-    let res= await fetch("/api/analytics/general");
+    let res= await fetch("http://localhost:5000/api/analytics/general");
     let data=await res.json()
     console.log(data);
     userNum.textContent=data.total_users;

@@ -53,7 +53,7 @@ saveButton.addEventListener("click", async (e) => {
     };
 
     try {
-        const response = await fetch(`/api/users/${idInput.value}`, {
+        const response = await fetch(`http://localhost:5000/api/users/${idInput.value}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -109,7 +109,7 @@ function confirmUser(rowData) {
 
 async function deleteUser(userId, row) {
     try {
-        const response = await fetch(`/api/users/${userId}`, {
+        const response = await fetch(`http://localhost:5000/api/users/${userId}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -131,7 +131,7 @@ async function deleteUser(userId, row) {
 // Function to fetch and display all data
 async function getAllData() {
     const content = document.querySelector(".add-user .content");
-    const response = await fetch("/api/users");
+    const response = await fetch("http://localhost:5000/api/users");
     const data = await response.json();
 
     if (data.length) {
@@ -205,7 +205,7 @@ async function createUser(e) {
         work_section_id: workSection.value,
     };
     try {
-        const response = await fetch("/api/users", {
+        const response = await fetch("http://localhost:5000/api/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

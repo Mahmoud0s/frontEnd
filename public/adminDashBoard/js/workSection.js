@@ -41,7 +41,7 @@ saveButton.addEventListener("click", async (e) => {
     };
 
     try {
-        const response = await fetch(`/api/work-sections/${idInput.value}`, {
+        const response = await fetch(`http://localhost:5000/api/work-sections/${idInput.value}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -98,7 +98,7 @@ function confirmWS(rowData) {
 
 async function deleteWS(userId, row) {
     try {
-        const response = await fetch(`/api/work-sections/${userId}`, {
+        const response = await fetch(`http://localhost:5000/api/work-sections/${userId}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -120,7 +120,7 @@ async function deleteWS(userId, row) {
 // Function to fetch and display all data
 async function getAllData() {
     const content = document.querySelector(".add-user .content");
-    const response = await fetch("/api/work-sections");
+    const response = await fetch("http://localhost:5000/api/work-sections");
     const data = await response.json();
     
     if (data.length) {
@@ -193,7 +193,7 @@ async function createNewWork(e) {
         name: workSectionName.value,
     };
     try {
-        const response = await fetch("/api/work-sections", {
+        const response = await fetch("http://localhost:5000/api/work-sections", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

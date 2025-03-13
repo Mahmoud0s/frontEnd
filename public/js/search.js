@@ -6,7 +6,7 @@ let input = searchBox.querySelector("input");
 
 searchBox.addEventListener("input", async () => {
     let content=searchBox.querySelector("div.content");
-        // let res = await fetch(`http://localhost:5000/api/search/search?query=${input.value}`);
+        // let res = await fetch(`/api/search/search?query=${input.value}`);
        getData(content,`http://localhost:5000/api/search/search?query=${input.value}`);
         // let data =await res.json();
         // content.textContent="";

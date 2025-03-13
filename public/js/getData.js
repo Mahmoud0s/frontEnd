@@ -101,7 +101,7 @@ async function getData(pos,api){
   } 
 
 async function getWS(){
-    const res=await fetch("/api/work-sections");
+    const res=await fetch("http://localhost:5000/api/work-sections");
     const allData=await res.json();
 
     let files=document.getElementsByClassName("files")[0];

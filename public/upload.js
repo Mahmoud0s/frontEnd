@@ -40,8 +40,10 @@ document.getElementById('upload-button').addEventListener('click', async functio
         alert('Please select a file to upload.');
     }
 });
+console.log("una");
+
 function checkUser(){
-    localStorage.getItem("user") == "true" ? "" : location.href="/login"
+    localStorage.getItem("user") == "true" ? "" : location.href="http://localhost:5000/login"
 }
 
 

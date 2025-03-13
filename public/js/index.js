@@ -5,12 +5,26 @@ const logoutBtn= document.getElementById("logout");
 
 const darkMode = document.querySelector('.dark-mode');
 
+
 if(localStorage.getItem("dark") == "true"){
     document.body.classList.toggle('dark-mode-variables');
     darkMode.querySelector('span:nth-child(1)').classList.toggle('active');
     darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
 }
 
+function popUpFun(el) {
+    el.classList.toggle("showMe");
+}
+
+
+
+let closePopUpBtn=document.querySelectorAll(".close_btn");
+closePopUpBtn.forEach(ele => {
+    ele.addEventListener("click",()=>{
+        popUpFun(ele.parentElement)
+    })
+    
+});
 menuBtn.addEventListener('click', (e) => {
     e.preventDefault()
     sideMenu.style.display = 'block';

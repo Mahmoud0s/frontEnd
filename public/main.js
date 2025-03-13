@@ -20,8 +20,9 @@ loginForm.addEventListener("submit", async (e) => {
         password: password.value
     };
     lodingForm.classList.toggle("hideMe");
+    setTimeout(async ()=>{
         try {
-            const response = await fetch("/api/auth/login", {
+            const response = await fetch("http://localhost:5000/api/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -43,15 +44,15 @@ loginForm.addEventListener("submit", async (e) => {
                     localStorage.removeItem("password");
                 }
                 // Cookies.set('username',userName.value, {
-                //     expires: 7, 
+                //     expires: 7, // Expires in 7 days
                 //     secure: true,
                 //     sameSite: 'strict'
                 // });
                 localStorage.setItem("user",true)
                 if(data.role=="admin"){
-                    window.location.href = "/adminDashBoard";
+                    window.location.href = "http://localhost:5000/adminDashBoard";
                 }else{
-                    window.location.href = "/home";
+                    window.location.href = "http://localhost:5000/home";
                 }
             } else {
                 message.textContent = data.message || "Login failed";
@@ -62,6 +63,6 @@ loginForm.addEventListener("submit", async (e) => {
             message.textContent = "An error occurred. Please try again.";
             message.style.color = "red";
         }
-
+    }, 3000);
 })
     

@@ -7,10 +7,6 @@ const imagePreview = document.getElementById('image-preview');
 let btn = document.getElementsByClassName("section-list")[0];
 btn.addEventListener("click", () => {location.href="/upload";});
 
-
-updatePopUp.addEventListener("dblclick", () => {
-    updatePopUp.classList.remove("showMe");
-});
 // Toggle class function
 function popUpFun(el) {
     const fileInput = document.getElementById('file-input');
@@ -98,7 +94,7 @@ async function getAllData() {
             console.error("Invalid URL structure for fetching data.");
             return;
         }
-        getData(div,`http://localhost:5000/api/search/work-section/${section}`)
+        getData(div,`/api/search/work-section/${section}`)
         getWsInfo()
     } catch (error) {
         console.error("An error occurred:", error);

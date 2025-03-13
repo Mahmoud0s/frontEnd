@@ -10,6 +10,9 @@
 </head>
 <body>
     <div class="pop-up" id="create-WS-popUp" >
+        <div class="close_btn">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
             <div class="popup-content" >
                 <h2>create new work Section</h2>
                 <form>
@@ -26,6 +29,9 @@
         </div>
     </div>
     <div class="pop-up" id="update-WS-popUp">
+        <div class="close_btn">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
         <div class="popup-content">
             <h2>update User</h2>
             <form>
@@ -42,6 +48,9 @@
         </div>
     </div>
     <div class="pop-up" id="delete-WS-popUp">
+        <div class="close_btn">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
         <div class="popup-content">
             <h2>Delete user</h2>
             <h3 id="msgwarning"></h3>
@@ -85,7 +94,7 @@
                     <h3>work section</h3>
                 </a>
                
-                <a href="/login">
+                <a href="/login" id="logout">
                     <span class="material-icons-sharp">
                         logout
                     </span>
@@ -94,6 +103,7 @@
             </div>
         </aside>
         <main>
+            <!-- start Analytics -->
             <h1>Analytics</h1>
             <div class="analyse">
                 <div class="sales">
@@ -115,8 +125,8 @@
                 <div class="visits">
                     <div class="status">
                         <div class="info">
-                            <h3>Site Visit</h3>
-                            <h1 id="">24,981</h1>
+                            <h3>douments</h3>
+                            <h1 id="docNum">24,981</h1>
                         </div>
                         <div class="progresss">
                             <svg>
@@ -144,10 +154,44 @@
                         </div>
                     </div>
                 </div>
+                <div class="searches">
+                    <div class="status">
+                        <div class="info">
+                            <h3>regular user</h3>
+                            <h1 id="regUsrNum"></h1>
+                        </div>
+                        <div class="progresss">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="percentage">
+                                <p>+21%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="searches">
+                    <div class="status">
+                        <div class="info">
+                            <h3>admin</h3>
+                            <h1 id="AdminNum"></h1>
+                        </div>
+                        <div class="progresss">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="percentage">
+                                <p>+21%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- end Analytics -->
+
             <div class="new-section">
-                <h2>New workSection</h2>
-                <div class="section-list">
+                <h2>New Users</h2>
+                <div class="section-list" >
                     <div class="user">
                         <i class="fa-solid fa-plus"></i>
                     </div>
@@ -157,7 +201,7 @@
 
             <!-- Recent Orders Table -->
             <div class="add-user">
-                <h2>work Section</h2>
+                <h2>Users</h2>
                 <div class="content"></div>
             </div>
             <!-- End of Recent Orders -->
