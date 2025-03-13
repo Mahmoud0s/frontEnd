@@ -50,9 +50,9 @@ loginForm.addEventListener("submit", async (e) => {
                 // });
                 localStorage.setItem("user",true)
                 if(data.role=="admin"){
-                    window.location.href = "http://localhost:5000/adminDashBoard";
+                    window.location.href = "/adminDashBoard";
                 }else{
-                    window.location.href = "http://localhost:5000/home";
+                    window.location.href = "/home";
                 }
             } else {
                 message.textContent = data.message || "Login failed";
