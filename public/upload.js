@@ -21,6 +21,9 @@ document.getElementById('upload-button').addEventListener('click', async functio
         try {
             const response = await fetch('http://localhost:5000/api/documents/upload', {
                 method: 'POST',
+                headers:{
+                    'Authorization': Cookies.get('token')
+                },
                 body: formData,
                 credentials: 'include'
             });

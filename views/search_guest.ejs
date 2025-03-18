@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="stylesheet" href="/adminDashBoard/style/style.css">
-    <title>folder</title>
+    <link rel="stylesheet" href="adminDashBoard/style/style.css">
+    <title>serach </title>
 </head>
 <body>
     <div class="pop-up" id="update-user-popUp">
@@ -22,9 +22,6 @@
                 </div>
                 <div>
                     <input type="file" accept="image/*" id="file-input">
-                </div>
-                <div>
-                    <img id="image-preview" src="" alt="Image Preview">
                 </div>
                 <div class="message"></div>
                 <input type="submit" id="Btn" value="send">
@@ -43,14 +40,14 @@
                 </div>
             </div>
             <div class="sidebar files">
-                <a href="/home" class="folder">
+                <a href="/home" class="folder active" >
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
                     <h3>home</h3>
                 </a>
 
-                <a href="/login" id="logout">
+                <a href="/login" id="logout" style="display: none;">
                     <span class="material-icons-sharp">
                         logout
                     </span>
@@ -60,6 +57,17 @@
         </aside>
         <main>
             <div class="new-section">
+                <h2>search</h2>
+                <div class="search-list" >
+                    <div>
+                        <input type="text" >
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div class="content">
+                    </div>
+                </div>
+            </div>
+            <div class="new-section">
                 <h2>upload</h2>
                 <div class="section-list" >
                     <div class="user">
@@ -67,12 +75,12 @@
                     </div>
                 </div>
             </div>
-            <div class="content"></div>
+            <svg id="barcode"></svg>
         </main>
         <!-- End of Main Content -->
 
         <!-- Right Section -->
-        <div class="right-section" >
+        <div class="right-section">
             
             <div class="nav">
                 <button id="menu-btn">
@@ -90,64 +98,25 @@
                 </div>
 
                 <div class="profile">
-                    <div class="info">
-                        welcome back <h4 id="user-name"></h4>
-                    </div>
-                    <div class="profile-photo">
-                        <i class="fa-regular fa-user"></i>
-                    </div>
+                    <a href="" >login</a>
                 </div>
-                <a href="/login" id="login">login</a>
+
             </div>
             <!-- End of Nav -->
-
-
-                <div class="allWsInfo">
-                    <div class="WSInfo">
-
-                            <div class="icon">
-                                <i class="fa-solid fa-folder"></i>
-                            </div>
-                            <div class="info">
-                                <h3>section name</h3>
-                                <h2 id="wsName"></h2>
-                            </div>
-
-                    </div>
-                    <div class="WSInfo">
-                            <div class="icon">
-                                <i class="fa-solid fa-print"></i>
-                            </div>
-                            <div class="info">
-                                <h3>douments</h3>
-                                <h2 id="docCount"></h2>
-                            </div>
-           
-                    </div>
-                    <div class="WSInfo">
-                        <div class="icon">
-                            <i class="fa-solid fa-house-user"></i>
-                        </div>
-                        <div class="info">
-                                <h3>users</h3>
-                                <h2 id="userCount"></h2>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
+            <div>
+                
+            </div>
 
         </div>
 
 
     </div>
-    <script src="/js/js.cookie.min.js"></script>
-    <script src="/js/JsBarcode.all.min.js"></script>
-    <script src="/js/index.js"></script>
-    <script src="/js/getData.js"></script>
-    <script src="/js/home.js"></script>
+    <script src="js/js.cookie.min.js"></script>
+     <script src="js/JsBarcode.all.min.js"></script>
+     <script src="js/index.js"></script> 
+     <script src="js/getData.js"></script>
+    <script src="js/search.js"></script>
+
 </body>
 
 </html>

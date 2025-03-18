@@ -1,6 +1,5 @@
 
 let btn = document.getElementsByClassName("section-list")[0];
-let sendBtn = document.getElementById("SendBtn");
 let createPopUp = document.getElementById("create-user-popUp");
 let updatePopUp = document.getElementById("update-user-popUp");
 
@@ -12,13 +11,11 @@ btn.addEventListener("click", () => { popUpFun(createPopUp); });
 
 
 
-
-
-
 // Function to populate update form
 function popUpFunUpdate(rowData) {
     const updateForm = document.forms[1]; // Ensure this is the correct form index
 
+    const name = updateForm.querySelector('input[name="name"]');
     let idInput = updateForm.querySelector('input[name="ID"]');
     let userName = updateForm.querySelector('input[name="username"]');
     let workSection = updateForm.querySelector('input[name="work_section_id"]');
@@ -26,27 +23,28 @@ function popUpFunUpdate(rowData) {
 
     idInput.value = rowData.id;
     idInput.disabled = true;
-    idInput.style.cursor = "not-allowed";
-
+    idInput.parentElement.style.display="none"
+    name.value=rowData.name;
     userName.value = rowData.username;
-    workSection.value = rowData.work_section_id; // Ensure the correct key name
     role.value = rowData.role;
 }
 
 // Add event listener to update form's submit button
 const updateForm = document.forms[1];
 const saveButton = updateForm.querySelector('input[type="submit"]');
-
+// update 
 saveButton.addEventListener("click", async (e) => {
     e.preventDefault();
 
+    const name = updateForm.querySelector('input[name="name"]');
     const idInput = updateForm.querySelector('input[name="ID"]');
     const userName = updateForm.querySelector('input[name="username"]');
     const workSection = updateForm.querySelector('input[name="work_section_id"]');
     const role = updateForm.querySelector('select[name="role"]');
-    const msg = updateForm.querySelector('div.message'); // Correct selector
+    const msg = updateForm.querySelector('div.message'); 
 
     const updatedData = {
+        name:name.value,
         username: userName.value,
         work_section_id: workSection.value,
         role: role.value
@@ -56,7 +54,8 @@ saveButton.addEventListener("click", async (e) => {
         const response = await fetch(`http://localhost:5000/api/users/${idInput.value}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Authorization': Cookies.get('token')
             },
             body: JSON.stringify(updatedData)
         });
@@ -85,6 +84,7 @@ let confirm = deletePopUp.querySelector("input[value='confirm']");
 let msgwarning = deletePopUp.querySelector("#msgwarning");
 
 
+// delete user
 
 confirm.addEventListener("click", () => {
     deleteUserAction();
@@ -106,13 +106,13 @@ function confirmUser(rowData) {
     });
 }
 
-
 async function deleteUser(userId, row) {
     try {
         const response = await fetch(`http://localhost:5000/api/users/${userId}`, {
             method: "DELETE",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Authorization': Cookies.get('token')
             }
         });
 
@@ -131,7 +131,14 @@ async function deleteUser(userId, row) {
 // Function to fetch and display all data
 async function getAllData() {
     const content = document.querySelector(".add-user .content");
-    const response = await fetch("http://localhost:5000/api/users");
+    const response = await fetch("http://localhost:5000/api/users",{
+         method: "Get",
+        headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': Cookies.get('token')
+            },
+        credentials: "include"
+    });
     const data = await response.json();
 
     if (data.length) {
@@ -187,28 +194,29 @@ async function getAllData() {
 }
 
 
-
-
-
-// Function to create a user
+// create a user
 async function createUser(e) {
-    let userName = document.getElementsByTagName("input")[0];
-    let password = document.getElementsByTagName("input")[1];
-    let workSection = document.getElementsByTagName("input")[2];
-    let role = document.getElementsByTagName("select")[0];
-    let msg = document.getElementsByClassName("message")[0];
     e.preventDefault();
+    let name = createPopUp.querySelector("input[name='name']");
+    let userName = createPopUp.querySelector("input[name='username']");
+    let password = createPopUp.querySelector("input[name='password']");
+    let workSection = createPopUp.querySelector("input[name='work_section_id']");
+    let role = createPopUp.querySelector("select[name='role']");
+    let msg = document.getElementsByClassName("message")[0];
     const info = {
+        name :name.value,
         username: userName.value,
         password: password.value,
         role: role.value,
         work_section_id: workSection.value,
     };
+    
     try {
         const response = await fetch("http://localhost:5000/api/users", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Authorization': Cookies.get('token'),
             },
             body: JSON.stringify(info),
             credentials: "include"
@@ -220,7 +228,6 @@ async function createUser(e) {
             msg.textContent = result.message;
             msg.style.color = '#1B9C85';
             const content = document.querySelector(".add-user .content");
-
             content.innerHTML = "";
             getAllData();
         } else {

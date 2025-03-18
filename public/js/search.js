@@ -1,8 +1,15 @@
 let btn = document.getElementsByClassName("section-list")[0];
-btn.addEventListener("click", () => {location.href="/upload";});
+btn.addEventListener("click", () => {
+    if(checkUser())
+        location.href="/upload";
+}
+);
 
 let searchBox=document.getElementsByClassName("search-list")[0];
 let input = searchBox.querySelector("input");
+let updatePopUp = document.getElementById("update-user-popUp");
+let idInput=document.querySelector("input[name='ID']");
+
 
 searchBox.addEventListener("input", async () => {
     let content=searchBox.querySelector("div.content");

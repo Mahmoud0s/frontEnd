@@ -44,7 +44,9 @@ saveButton.addEventListener("click", async (e) => {
         const response = await fetch(`http://localhost:5000/api/work-sections/${idInput.value}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Authorization': Cookies.get('token'),
+
             },
             body: JSON.stringify(updatedData)
         });
@@ -101,7 +103,8 @@ async function deleteWS(userId, row) {
         const response = await fetch(`http://localhost:5000/api/work-sections/${userId}`, {
             method: "DELETE",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Authorization': Cookies.get('token')
             }
         });
 
@@ -196,7 +199,9 @@ async function createNewWork(e) {
         const response = await fetch("http://localhost:5000/api/work-sections", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Authorization': Cookies.get('token')
+
             },
             body: JSON.stringify(info),
             credentials: "include"

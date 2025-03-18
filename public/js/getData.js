@@ -68,8 +68,10 @@ async function getData(pos,api){
               updateButton.innerText = "Update";
               updateButton.setAttribute("id", "upload-button");
               updateButton.addEventListener("click", function () {
-                  popUpFun(updatePopUp); // Ensure popUpFun and updatePopUp are defined
-                  if (idInput) idInput.value = rowData.id; // Validate idInput reference
+                    if(checkUser()){
+                        popUpFun(updatePopUp); // Ensure popUpFun and updatePopUp are defined
+                        if (idInput) idInput.value = rowData.id; // Validate idInput reference
+                    }
               });
 
               actionCell.appendChild(viewButton);

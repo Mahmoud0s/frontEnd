@@ -228,6 +228,7 @@ main .analyse{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1.6rem;
+    text-align: center;
 }
 
 main .analyse > div{
@@ -418,6 +419,7 @@ main .add-user a{
 .right-section .nav , nav{
     display: flex;
     justify-content: end;
+    align-items: center;
     gap: 2rem;
 }
 
@@ -455,15 +457,34 @@ main .add-user a{
     display: flex;
     gap: 2rem;
     text-align: right;
+    align-items: center;
 }
-
-.right-section .nav .profile .profile-photo , nav .profile .profile-photo{
-    width: 2.8rem;
-    height: 2.8rem;
+.profile .profile-photo{
+    border: 2px solid var(--color-dark);
     border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile .profile-photo i{
+    font-size: 18px;
+}
+.right-section  a{
+    color: var(--color-dark);
+    border:2px solid;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: bold;
+    text-transform: capitalize;
+    transition: 0.5s;
     overflow: hidden;
 }
-
+.right-section a:hover{
+    background-color: var(--color-dark);
+    color: var(--color-primary);
+}
 .right-section .user-profile{
     display: flex;
     justify-content: center;
@@ -708,6 +729,7 @@ main .add-user a{
     .right-section .profile .info{
         display: none;
     }
+
 
     .right-section .nav button , nav button{
         display: inline-block;

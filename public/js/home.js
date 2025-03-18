@@ -5,7 +5,7 @@ let message=document.querySelector("div.message");
 const imagePreview = document.getElementById('image-preview');
 
 let btn = document.getElementsByClassName("section-list")[0];
-btn.addEventListener("click", () => {location.href="/upload";});
+btn.addEventListener("click", () => {checkUser() ? location.href="/upload" :" ";});
 
 // Toggle class function
 function popUpFun(el) {
@@ -29,6 +29,9 @@ async function updateImage(e){
         try {
             const response = await fetch(`http://localhost:5000/api/documents/update/${idInput.value}`, {
                 method: 'put',
+                headers:{
+                    'Authorization': Cookies.get('token')
+                },
                 body: formData,
                 credentials: 'include'
             });
@@ -84,7 +87,6 @@ async function getWsInfo(){
 }
 async function getAllData() {
     try {
-        // Reference the main element in the DOM
         let main = document.body.getElementsByTagName("main")[0];
         let div=document.createElement("div");
         main.appendChild(div);
