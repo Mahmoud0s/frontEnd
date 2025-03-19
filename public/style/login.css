@@ -37,7 +37,7 @@ body {
         background-position: 0% 50%;
     }
 }
-.box::before {
+/* .box::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -48,8 +48,8 @@ body {
     z-index: 1;
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
-}
-.box::after {
+} */
+/* .box::after {
     content: '';
     position: absolute;
     top: -50%;
@@ -61,13 +61,13 @@ body {
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
     animation-delay: -3s;
-}
+} */
 .borderLine{
     position: absolute;
     top: 0;
     inset: 0;
 }
-.borderLine::before{
+/* .borderLine::before{
     content: '';
     position: absolute;
     top: -50%;
@@ -92,7 +92,7 @@ body {
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
     animation-delay: -4.5s;
-}
+} */
 
 @keyframes animate {
     0% {
@@ -106,7 +106,7 @@ body {
     position: relative;
     height: 550px;
     width: 470px;
-    background: #1c1c1c;
+    background: #ffffffbf;
     border-radius: 8px;
     overflow: hidden;
     display: flex;

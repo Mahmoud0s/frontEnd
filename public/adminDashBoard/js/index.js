@@ -44,25 +44,38 @@ darkMode.addEventListener('click', () => {
     darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
     localStorage.setItem("dark", localStorage.getItem("dark") == "true" ? "false" : "true");
 })
+
+
+
+
+
+
+function hideAllPopUps() {
+    const allPopUp = document.querySelectorAll(".pop-up");
+    allPopUp.forEach((popup) => {
+            popup.classList.remove("showMe");
+    });
+}
+
+function popUpFun(el) {
+    hideAllPopUps();
+    el.classList.toggle("showMe");
+}
+
+
+let closePopUpBtn=document.querySelectorAll(".close_btn");
+closePopUpBtn.forEach(ele => {
+    ele.addEventListener("click",()=>{
+        hideAllPopUps(ele.parentElement)
+    })
+    
+});
+
 const userNum=document.getElementById("userNum");
 const WSNum=document.getElementById("workSectionNum");
 const docNum=document.getElementById("docNum");
 const regUsrNum=document.getElementById("regUsrNum");
 const AdminNum=document.getElementById("AdminNum");
-
-
-
-function popUpFun(el) {
-    el.classList.toggle("showMe");
-}
-
-let closePopUpBtn=document.querySelectorAll(".close_btn");
-closePopUpBtn.forEach(ele => {
-    ele.addEventListener("click",()=>{
-        popUpFun(ele.parentElement)
-    })
-    
-});
 
 
 async function getData(){
@@ -74,13 +87,16 @@ async function getData(){
             },
         credentials: "include"
     });
-    let data=await res.json()
-    console.log(data);
-    userNum.textContent=data.total_users;
-    WSNum.textContent=data.total_work_sections;
-    docNum.textContent=data.total_documents;
-    AdminNum.textContent=data.admin_users;
-    regUsrNum.textContent=data.regular_users;
+    if(res.status==401 || res.status==403){
+        location.href="/login"
+    }else{
+        let data=await res.json()
+        userNum.textContent=data.total_users;
+        WSNum.textContent=data.total_work_sections;
+        docNum.textContent=data.total_documents;
+        AdminNum.textContent=data.admin_users;
+        regUsrNum.textContent=data.regular_users;
+    }
     
 }
 

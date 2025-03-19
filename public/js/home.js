@@ -90,7 +90,6 @@ async function getAllData() {
         let main = document.body.getElementsByTagName("main")[0];
         let div=document.createElement("div");
         main.appendChild(div);
-        // Safeguard against unexpected URL structure
         const section = location.href.split("work-section/")[1];
         if (!section) {
             console.error("Invalid URL structure for fetching data.");

@@ -1,3 +1,4 @@
+
 document.getElementById('file-input').addEventListener('change', function(event) {
     const file = event.target.files[0];
     if (file) {
@@ -31,8 +32,11 @@ document.getElementById('upload-button').addEventListener('click', async functio
             const result = await response.json();
             if (response.ok) {
                 alert('File uploaded successfully: ' + result.message);
-                console.log(result);
-            } else {
+            }
+            else if(response.status==403 || response.status==401){
+                location.href="/login"
+            }
+             else {
                 alert('File upload failed: ' + result.message);
             }
         } catch (error) {
@@ -46,7 +50,7 @@ document.getElementById('upload-button').addEventListener('click', async functio
 console.log("una");
 
 function checkUser(){
-    localStorage.getItem("user") == "true" ? "" : location.href="http://localhost:5000/login"
+    Cookies.get("logiedin") == "true" ? "" : location.href="/login"
 }
 
 

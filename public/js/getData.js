@@ -1,11 +1,12 @@
 async function getData(pos,api){
     pos.textContent="";
-      // Fetch data from the server
       let res = await fetch(api);
       let data = await res.json();
       let counter = 0;
-
-      
+      if(res.status==404){
+        location.href="/home"
+      } 
+    
       if (data.length) {
           const keys = Object.keys(data[0]);
 
@@ -24,12 +25,11 @@ async function getData(pos,api){
               headerRow.appendChild(th);
           });
 
-          // Add an "Actions" column header
+  
           const actionHeader = document.createElement("th");
           actionHeader.textContent = "Actions";
           headerRow.appendChild(actionHeader);
 
-          // Populate table rows with data
           data.forEach((rowData) => {
               const row = tbody.insertRow();
 
@@ -44,7 +44,7 @@ async function getData(pos,api){
                       cell.appendChild(img);
                       counter++;
                   } else if (key === "uploaded_at" && rowData[key]) {
-                      // Ensure "uploaded_at" has valid properties
+
                       const { date, time } = rowData[key];
                       cell.textContent = `${date || ""} ${time || ""}`;
                   } else {
@@ -52,7 +52,6 @@ async function getData(pos,api){
                   }
               });
 
-              // Add action buttons
               const actionCell = row.insertCell();
 
               // View button
@@ -69,8 +68,8 @@ async function getData(pos,api){
               updateButton.setAttribute("id", "upload-button");
               updateButton.addEventListener("click", function () {
                     if(checkUser()){
-                        popUpFun(updatePopUp); // Ensure popUpFun and updatePopUp are defined
-                        if (idInput) idInput.value = rowData.id; // Validate idInput reference
+                        popUpFun(updatePopUp); 
+                        if (idInput) idInput.value = rowData.id; 
                     }
               });
 
@@ -78,10 +77,8 @@ async function getData(pos,api){
               actionCell.appendChild(updateButton);
           });
 
-          // Append the table to the pos element
           pos.appendChild(table);
 
-          // Generate barcodes using JsBarcode
           data.forEach((rowData, ind) => {
               try {
                   JsBarcode(`#barcode-${ind}`, rowData.barcode, {
@@ -98,7 +95,6 @@ async function getData(pos,api){
           });
       } else {
         pos.textContent=data.message || "no content to show";
-          // Display a message if no data is available
       }
   } 
 

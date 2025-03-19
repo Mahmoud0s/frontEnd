@@ -6,14 +6,14 @@ let updatePopUp = document.getElementById("update-user-popUp");
 
 
 
-// Event listeners for toggling popups
+
 btn.addEventListener("click", () => { popUpFun(createPopUp); });
 
 
 
-// Function to populate update form
+
 function popUpFunUpdate(rowData) {
-    const updateForm = document.forms[1]; // Ensure this is the correct form index
+    const updateForm = document.forms[1];
 
     const name = updateForm.querySelector('input[name="name"]');
     let idInput = updateForm.querySelector('input[name="ID"]');
@@ -29,7 +29,7 @@ function popUpFunUpdate(rowData) {
     role.value = rowData.role;
 }
 
-// Add event listener to update form's submit button
+
 const updateForm = document.forms[1];
 const saveButton = updateForm.querySelector('input[type="submit"]');
 // update 
@@ -94,7 +94,7 @@ function confirmUser(rowData) {
     return new Promise((resolve) => {
         msgwarning.textContent = `Are you sure you want to delete this user: (id: ${rowData.id} , user: ${rowData.username})?`;
         popUpFun(deletePopUp);
-        // Save the delete action to be performed after confirmation
+
         deleteUserAction = () => {
             popUpFun(deletePopUp);
             resolve(true);
@@ -102,7 +102,7 @@ function confirmUser(rowData) {
         cancel.addEventListener("click", () => {
             popUpFun(deletePopUp);
             resolve(false);
-        }, { once: true }); // Ensures the event listener runs only once
+        }, { once: true }); 
     });
 }
 
@@ -128,7 +128,7 @@ async function deleteUser(userId, row) {
     }
 }
 
-// Function to fetch and display all data
+
 async function getAllData() {
     const content = document.querySelector(".add-user .content");
     const response = await fetch("http://localhost:5000/api/users",{

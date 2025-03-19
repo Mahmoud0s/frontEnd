@@ -1,8 +1,3 @@
-// Toggle class function
-function popUpFun(el) {
-    el.classList.toggle("showMe");
-}
-
 let sendBtn = document.getElementById("SendBtn");
 let createPopUp = document.getElementById("create-WS-popUp");
 let updatePopUp = document.getElementById("update-WS-popUp");
@@ -12,7 +7,7 @@ const content = document.querySelector(".add-user .content");
 let btn = document.getElementsByClassName("section-list")[0];
 btn.addEventListener("click", () => { popUpFun(createPopUp); });
 
-// Function to populate update form
+
 function popUpFunUpdate(rowData) {
     const updateForm = document.forms[1]; 
 
@@ -25,7 +20,7 @@ function popUpFunUpdate(rowData) {
     workSectionName.value = rowData.name;
 }
 
-// Add event listener to update form's submit button
+
 const updateForm = document.forms[1];
 const saveButton = updateForm.querySelector('input[type="submit"]');
 
@@ -34,7 +29,7 @@ saveButton.addEventListener("click", async (e) => {
 
     const idInput = updateForm.querySelector('input[name="ID"]');
     const workSectionName = updateForm.querySelector('input[name="workSectionName"]');
-    const msg = updateForm.querySelector('div.message'); // Correct selector
+    const msg = updateForm.querySelector('div.message'); 
     
     const updatedData = {
         name: workSectionName.value,
@@ -84,7 +79,7 @@ function confirmWS(rowData) {
         msgwarning.innerHTML = `Are you sure you want to delete this work section: 
         <h4>( id: ${rowData.id} , work Section name: ${rowData.name} ) ? </h4>`;
         popUpFun(deletePopUp);
-        // Save the delete action to be performed after confirmation
+
         deleteWSAction = () => {
             popUpFun(deletePopUp);
             resolve(true);
@@ -92,7 +87,7 @@ function confirmWS(rowData) {
         cancel.addEventListener("click", () => {
             popUpFun(deletePopUp);
             resolve(false);
-        }, { once: true }); // Ensures the event listener runs only once
+        }, { once: true }); 
     });
 }
 
@@ -120,7 +115,7 @@ async function deleteWS(userId, row) {
     }
 }
 
-// Function to fetch and display all data
+
 async function getAllData() {
     const content = document.querySelector(".add-user .content");
     const response = await fetch("http://localhost:5000/api/work-sections");
@@ -186,7 +181,7 @@ async function getAllData() {
 
 
 const createWorkSection=document.forms[0];
-// Function to create a user
+
 async function createNewWork(e) {
     let workSectionName = createWorkSection.querySelector("[name='workSectionName']");    
     let msg = createWorkSection.querySelector(".message");
