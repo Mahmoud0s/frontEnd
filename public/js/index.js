@@ -60,4 +60,5 @@ logoutBtn.addEventListener("click",()=>{
     Cookies.set("token","");
     Cookies.set("username","unkown");
     Cookies.set("logedin",false)
+    Cookies.set("role","")
 })
