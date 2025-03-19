@@ -386,7 +386,6 @@ main  table{
     width: 100%;
     padding: var(--card-padding);
     text-align: center;
-    box-shadow: var(--box-shadow);
     border-radius: var(--card-border-radius);
     transition: all 0.3s ease;
 }
