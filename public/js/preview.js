@@ -57,6 +57,8 @@ async function getData(){
     let res= await fetch(`http://localhost:5000/api/search/${imgId}`);
     let data =await res.json();
     
+    if (res.status==404) 
+        location.href="/home"
     img.src=data.document.file_path;
     info(data.document);
     history(data.edit_history)

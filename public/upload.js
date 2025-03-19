@@ -47,10 +47,8 @@ document.getElementById('upload-button').addEventListener('click', async functio
         alert('Please select a file to upload.');
     }
 });
-console.log("una");
-
 function checkUser(){
-    Cookies.get("logiedin") == "true" ? "" : location.href="/login"
+    Cookies.get("logedin") == "true" ? " " : location.href="/login"
 }
 
 

@@ -24,6 +24,7 @@ if(logedin=="true"){
 function popUpFun(el) {
     el.classList.toggle("showMe");
 }
+
 function checkUser(){
     if(Cookies.get("logedin")=="false")
         location.href="/login"
