@@ -1,12 +1,23 @@
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-
+const helmet = require('helmet'); // Import helmet
 
 const app = express();
 app.use(express.json());
 
 app.use(cookieParser())
+
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            connectSrc: ["'self'", "http://localhost:5000"],
+            imgSrc: ["'self'", "data:", "http://localhost:5000/uploads/"], 
+        }
+    }
+}));
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended:false}))
@@ -31,12 +42,12 @@ app.get("/search/work-section/:WSId",(req,res)=>{
 app.get("/search/:imgId",(req,res)=>{
     res.render("preview-image.ejs")
 })
-app.get("/adminDashBoard/",(req,res)=>{        
-    res.render("dashboardAdmin/dashboard.ejs")    
+app.get("/adminDashBoard/",(req,res)=>{
+    res.render("dashboardAdmin/dashboard.ejs")
 })
 
-app.get("/adminDashBoard/workSection",(req,res)=>{    
-    res.render("dashboardAdmin/workSection.ejs")    
+app.get("/adminDashBoard/workSection",(req,res)=>{
+    res.render("dashboardAdmin/workSection.ejs")
 })
 
 app.use((err, req, res, next) => {
@@ -44,5 +55,5 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: 'Something went wrong!' });
 });
 
-const PORT =7070;
+const PORT = 7070;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
