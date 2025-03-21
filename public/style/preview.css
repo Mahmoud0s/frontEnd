@@ -1,0 +1,111 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    height: 100vh;
+}
+p{
+    margin: 0;
+    padding: 5px;
+}
+.preview-container {
+    margin: 40px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 25px;
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.img-preview {
+    border-radius: 25px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 50%;
+}
+.img-preview img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.img-info {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    color: #666;
+    gap: 20px;
+}
+ul{
+    padding-left: 20px;
+    padding-bottom:15px ;
+    list-style: none;
+    position: relative;
+    border-left:2px solid black ;
+}
+ul li{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+
+}
+ul li:last-of-type::before{
+    content: "";
+    position: absolute;
+    left: -8px;
+    bottom: 0px;
+    width: 6px;
+    height: 25px;
+    border-right: 2px dashed #ffffff;
+}
+ul li::after{
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    outline: 2px solid #666;
+    border: 2px solid #ffffff;
+    background-color: #666;
+    position: absolute;
+    left: -13px;
+    z-index: 1;
+}
+
+li.loading::after{
+    animation-name: currentPos;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
+
+@media (max-width: 1000px) {
+    .img-info{
+        align-items: center;
+    }
+    .preview-container {
+        gap: 40px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .img-preview {
+        max-width: 100%;
+    }
+    #barcode{
+        max-width: 100%;
+    }
+}
+
+@keyframes currentPos{
+    50%{
+        background-color: white;
+    }
+}
