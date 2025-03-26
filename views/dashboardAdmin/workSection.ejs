@@ -10,7 +10,7 @@
     <title>Responsive Dashboard Design </title>
 </head>
 <body>
-    <div class="pop-up" id="create-WS-popUp" >
+    <div class="pop-up" id="create-popUp" >
         <div class="close_btn">
             <i class="fa-solid fa-xmark"></i>
         </div>
@@ -23,31 +23,31 @@
                     </div>
                     <div class="message"></div>
                     <div>
-                        <input type="submit" id="SendBtn" value="send">
+                        <input type="submit" id="Btn" value="send">
                     </div>
                 </form>
         </div>
     </div>
-    <div class="pop-up" id="update-WS-popUp">
+    <div class="pop-up" id="update-popUp">
         <div class="close_btn">
             <i class="fa-solid fa-xmark"></i>
         </div>
         <div class="popup-content">
             <h2>update workSection</h2>
-            <form>
+            <form id="updateForm">
                 <div>
                     <h4>ID</h4>
                     <input type="text" name="ID" >
                 </div>
                 <div>
                     <h4>work section name</h4>
-                        <input type="text" name="workSectionName">
+                        <input type="text" name="name">
                     </div>
                 <div class="message"></div>
                 <input type="submit" id="Btn" value="send">
         </div>
     </div>
-    <div class="pop-up" id="delete-WS-popUp">
+    <div class="pop-up" id="delete-popUp">
         <div class="close_btn">
             <i class="fa-solid fa-xmark"></i>
         </div>
@@ -224,9 +224,9 @@
 
 
     </div>
-    <script src="/script/js.cookie.min.js"></script>
+    <script src="/script/utils/js.cookie.min.js"></script>
     <script src="/script/pages/dashBoard/index.js"></script>
-    <script src="/script/pages/dashBoard/workSection.js"></script>
+    <script type="module" src="/script/pages/dashBoard/workSection.js"></script>
 </body>
 
 </html>

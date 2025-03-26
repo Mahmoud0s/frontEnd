@@ -22,7 +22,6 @@ app.use(helmet({
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended:false}))
 
-app.use('/adminDashBoard', express.static(path.join(__dirname, 'public/adminDashBoard')));
 
 app.get("/",(req,res)=>{
     res.redirect("/home")

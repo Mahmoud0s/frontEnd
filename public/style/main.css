@@ -775,7 +775,7 @@ main .add-user a{
     opacity: 0;
     transition: 0.6s;
 }
-.pop-up.showMe  {
+.pop-up.showPopUp  {
     opacity: 1;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -826,6 +826,10 @@ main table button , .pop-up input[type="submit"] , .popup-content div:last-of-ty
     border-radius: 5px;
     cursor: pointer;
     transition: 0.5s;
+}
+main table button.view{
+    background-color: var(--color-primary);
+    color: var(--color-background);
 }
 main table button.edit{
     background-color: var(--color-primary);
@@ -912,6 +916,10 @@ input[name='ID']{
 #image-preview {
     max-width: 100%;
     max-height: 100%;
+}
+#msgwarning{
+    padding: 8px;
+    color: var(--color-danger);
 }
 /* .files{
     padding: 20px;

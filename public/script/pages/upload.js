@@ -1,4 +1,6 @@
 
+!Cookies.get("token") || Cookies.get("role")=="admin"  ? location.href="/login" : "";
+
 document.getElementById('file-input').addEventListener('change', function(event) {
     const file = event.target.files[0];
     if (file) {
@@ -47,9 +49,4 @@ document.getElementById('upload-button').addEventListener('click', async functio
         alert('Please select a file to upload.');
     }
 });
-function checkUser(){
-    Cookies.get("logedin") == "false" || Cookies.get("role")=="admin"  ? location.href="/login" : ""
-}
 
-
-document.addEventListener("DOMContentLoaded", checkUser);

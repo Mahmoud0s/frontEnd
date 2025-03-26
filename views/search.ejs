@@ -9,13 +9,13 @@
     <title>serach </title>
 </head>
 <body>
-    <div class="pop-up" id="update-user-popUp">
+    <div class="pop-up" id="update-popUp">
         <div class="close_btn">
             <i class="fa-solid fa-xmark"></i>
         </div>
         <div class="popup-content">
             <h2>update image</h2>
-            <form>
+            <form id="updateForm">
                 <div>
                     <h4>ID</h4>
                     <input type="text" name="ID">
@@ -119,11 +119,10 @@
 
 
     </div>
-    <script src="/script/js.cookie.min.js"></script>
-     <script src="/script/JsBarcode.all.min.js"></script>
-     <script src="/script/index.js"></script> 
-     <script src="/script/getData.js"></script>
-    <script src="/script/pages/search.js"></script>
+    <script src="/script/utils/js.cookie.min.js"></script>
+    <script src="/script/utils/JsBarcode.all.min.js"></script>
+    <script src="/script/index.js"></script> 
+    <script type="module" src="/script/pages/search.js"></script>
 
 </body>
 

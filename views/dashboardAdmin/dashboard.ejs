@@ -9,7 +9,7 @@
     <title>Responsive Dashboard Design </title>
 </head>
 <body>
-    <div class="pop-up" id="create-user-popUp" >
+    <div class="pop-up" id="create-popUp" >
         <div class="close_btn">
             <i class="fa-solid fa-xmark"></i>
         </div>
@@ -48,13 +48,13 @@
                 </form>
         </div>
     </div>
-    <div class="pop-up" id="update-user-popUp">
+    <div class="pop-up" id="update-popUp">
         <div class="close_btn">
             <i class="fa-solid fa-xmark"></i>
         </div>
         <div class="popup-content">
             <h2>update User</h2>
-            <form>
+            <form id="updateForm">
                 <div>
                     <h4>name</h4>
                     <input type="text" name="name">
@@ -86,7 +86,7 @@
                 </div>
         </div>
     </div>
-    <div class="pop-up" id="delete-user-popUp">
+    <div class="pop-up" id="delete-popUp">
         <div class="close_btn">
             <i class="fa-solid fa-xmark"></i>
         </div>
@@ -130,7 +130,7 @@
                     </span>
                     <h3>work section</h3>
                 </a>
-                <a href="/login" id="logout">
+                <a href="" id="logout">
                     <span class="material-icons-sharp">
                         logout
                     </span>
@@ -263,9 +263,9 @@
 
 
     </div>
-    <script src="/script/js.cookie.min.js"></script>
+    <script src="/script/utils/js.cookie.min.js"></script>
     <script src="/script/pages/dashBoard/index.js"></script>
-    <script src="/script/pages/dashBoard/user.js"></script>
+    <script type="module" src="/script/pages/dashBoard/user.js"></script>
 </body>
 
 </html>

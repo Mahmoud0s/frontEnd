@@ -1,4 +1,5 @@
 
+import {createBarCode} from "/script/component/barcode.js"
 let imgId=location.href.match(/(\d)+/g)[1];
 const img=document.images[0];
 const imgInfo=document.getElementsByClassName("img-info")[0];
@@ -18,7 +19,7 @@ function info(obj){
             
         }
         else if(key =="barcode"){
-            p.innerHTML=`<strong>${key} : </strong> <img id="barcode">`;
+            p.innerHTML=`<strong>${key} : </strong> <img id="barcode-${obj.id}">`;
             p.style.cssText=`
                 display: flex;
                 align-items: center;
@@ -30,17 +31,7 @@ function info(obj){
             p.innerHTML=`<strong>${key.replace("_"," ")} : </strong> ${obj[key]}`;
         imgInfo.appendChild(p)
     }
-    
-    JsBarcode(`#barcode`,encodeURIComponent(barcodeText),
-        {
-            format: "CODE128",
-            lineColor: "#000",
-            text:barcodeText,
-            width: 2,
-            height: 50,
-            displayValue:true, 
-            fontSize: 16,
-        });
+    createBarCode([obj])
 }
 function history(obj){
     
