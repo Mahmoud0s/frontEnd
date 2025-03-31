@@ -29,11 +29,18 @@ document.querySelectorAll(".close_btn").forEach(ele => {
 });
 
 // update 
+let updateForm 
+let saveButton ;
+let updatePopUp ;
+let msg ; 
+if(document.querySelector("#updateForm"))
+{
+    updateForm = document.querySelector("#updateForm");
+    saveButton = updateForm.querySelector('input[type="submit"]');
+    updatePopUp = document.getElementById("update-popUp");
+    msg = updateForm.querySelector('div.message'); 
 
-const updateForm = document.querySelector("#updateForm");
-const saveButton = updateForm.querySelector('input[type="submit"]');
-const updatePopUp = document.getElementById("update-popUp");
-const msg = updateForm.querySelector('div.message'); 
+}
 
     //change value of selected user
 async function popUpFunUpdate(rowData,page) {
@@ -62,6 +69,9 @@ async function popUpFunUpdate(rowData,page) {
         }
         !foundWS?workSection.value=null:""
     }
+    else if(page=="hall"){
+        updateForm.querySelector("#projector_state").value = rowData.projector_state;
+    }
     msg.textContent=""
 }
 
@@ -70,9 +80,26 @@ async function saveFun(e){
     e.preventDefault();
     const name = updateForm.querySelector('input[name="name"]');
     const idInput = updateForm.querySelector('input[name="ID"]');
-    const page= updateForm.children.length==7? "user" : "workSection"
+    let page;
+    // gonna change soon
+    if(updateForm.children.length==7)
+        page="user"
+    else if(updateForm.children.length==5)
+        page="hall"
+    else
+        page="workSection"
     
-    const API= page=="user"?`http://localhost:5000/api/users/${idInput.value}`:`http://localhost:5000/api/work-sections/${idInput.value}`
+    let API;
+    
+    if (page=="user")
+        API=`http://localhost:5000/api/users/${idInput.value}`;
+    else if (page=="workSection")
+        API=`http://localhost:5000/api/work-sections/${idInput.value}`;
+    else
+        API=`http://localhost:5000/api/halls/update/${idInput.value}`
+    
+
+
     let updatedData={};
     if(page=="user"){
         const userName = updateForm.querySelector('input[name="username"]');
@@ -86,10 +113,18 @@ async function saveFun(e){
             work_section_id: workSection.value,
             role: role.value
         };
-    }else{
+    }else if(page=="workSection"){
         updatedData = {
             name: name.value,
         };
+    }
+    else{
+        updatedData = {
+            name:name.value,
+            projector_state:updateForm.querySelector("#projector_state").value
+        };
+
+
     }
     try {
         const response = await fetch(API, {
@@ -124,11 +159,12 @@ async function updateImage(e){
     e.preventDefault();
     const fileInput = document.getElementById('file-input');
     const file = fileInput.files[0];
-    const idInput = updateForm.querySelector('input[name="ID"]');
+    const idInput = updateForm.querySelector('input[name="ID"]') ;
     
     if (file) {
         const formData = new FormData();
         formData.append('file', file);
+        
         try {
             const response = await fetch(`http://localhost:5000/api/documents/update/${idInput.value}`, {
                 method: 'put',
@@ -142,7 +178,9 @@ async function updateImage(e){
             // if(response.status==403){
             //     location.href="/login"
             // }
+            
             const result = await response.json();
+            console.log(result);
             if (response.ok) {
                 msg.textContent=result.message
                 msg.style.color="#1B9C85"
@@ -159,7 +197,7 @@ async function updateImage(e){
         msg.style.color="#FF0060"
     }
 }
-
+if(document.querySelector("#updateForm"))
 saveButton.addEventListener("click",updateForm.querySelector("#file-input")?updateImage:saveFun);
 
 //delete 
@@ -178,8 +216,14 @@ if(deletePopUp){
 function confirmFun(rowData,page) {
 let msgwarning = deletePopUp.querySelector("#msgwarning");
     return new Promise((resolve) => {
-        const msgContent= page=="user" ? `Are you sure you want to delete this user: (user: ${rowData.username})?` : `Are you sure you want to delete this work section: 
-<h4>( work Section name: ${rowData.name} ) ? </h4>`
+        let msgContent;
+        if (page=="user") 
+            msgContent= `Are you sure you want to delete this user: (user: ${rowData.username})?` ;
+        else if (page=="workSection")
+            msgContent=`Are you sure you want to delete this work section: <h4>( work Section name: ${rowData.name} ) ? </h4>`
+        else
+            msgContent=`Are you sure you want to delete this hall: <h4>( hall name: ${rowData.name} ) ? </h4>`
+
         msgwarning.innerHTML =msgContent ;
         popUpFun(deletePopUp);
 
@@ -192,7 +236,14 @@ let msgwarning = deletePopUp.querySelector("#msgwarning");
 
 
 async function deleteFun(Id, row , page) {
-    const API = page=="user"?`http://localhost:5000/api/users/${Id}`:`http://localhost:5000/api/work-sections/${Id}`;
+    let API;
+    if (page=="user")
+        API=`http://localhost:5000/api/users/${Id}`;
+    else if (page=="workSection")
+        API=`http://localhost:5000/api/work-sections/${Id}`;
+    else
+        API=`http://localhost:5000/api/halls/delete/${Id}`
+    
     try {
         const response = await fetch(API, {
             method: "DELETE",

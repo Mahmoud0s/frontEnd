@@ -1,10 +1,44 @@
 
 import {createBarCode} from "/script/component/barcode.js"
+import {hideAllPopUps , popUpFun , updatePopUp , popUpFunImage }  from "/script/component/popup.js";
 let imgId=location.href.match(/(\d)+/g)[1];
-const img=document.images[0];
+const img=document.images[1];
 const imgInfo=document.getElementsByClassName("img-info")[0];
 let ul=document.getElementsByTagName("ul")[0];
 let barcodeText;
+
+// onclick on file
+document.getElementById('file-input').addEventListener('change', function(event) {
+    const imagePreview = document.getElementById('image-preview');
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
+const saveButton = updateForm.querySelector('input[type="submit"]');
+saveButton.addEventListener("click",()=>{
+    setTimeout(()=>{
+        location.reload()
+    },500)
+})
+let idInput = updateForm.querySelector('input[name="ID"]');
+    idInput.value = location.href.split("/search/")[1];
+    idInput.disabled = true;
+    idInput.parentElement.style.display="none"
+
+// upload button
+const updateBtn=document.getElementById("updateBtn");
+updateBtn.addEventListener("click",(e)=>{
+    e.preventDefault()
+    updatePopUp.classList.toggle("showPopUp")
+    popUpFunImage(updatePopUp)
+    
+})
 
 function info(obj){
     for (const key in obj) {

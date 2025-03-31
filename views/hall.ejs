@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="stylesheet" href="style/main.css">
-    <title>serach </title>
+    <link rel="stylesheet" href="/style/main.css">
+    <title>folder</title>
 </head>
 <body>
-    <div class="pop-up" id="update-popUp">
+    <div class="pop-up" id="create-popUp" >
         <div class="close_btn">
             <i class="fa-solid fa-xmark"></i>
         </div>
-        <div class="popup-content">
-            <h2>update image</h2>
-            <form id="updateForm">
-                <div>
-                    <h4>ID</h4>
-                    <input type="text" name="ID">
-                </div>
-                <div>
-                    <input type="file" accept="image/*" id="file-input">
-                </div>
-                <div>
-                    <img id="image-preview" src="" alt="Image Preview">
-                </div>
-                <div class="message"></div>
-                <input type="submit" id="Btn" value="send">
+            <div class="popup-content" >
+                <h2>report an issue</h2>
+                <form>
+                    <div>
+                    <h4>hall name</h4>
+                        <select name="reportID">
+                        </select>
+                    </div>
+                    <h4>description</h4>
+                    <textarea name="description" id=""></textarea>
+                    <div class="message"></div>
+                    <div>
+                        <input type="submit" id="Btn" value="send">
+                    </div>
+                </form>
         </div>
     </div>
     <div class="container">
@@ -43,15 +43,14 @@
                 </div>
             </div>
             <div class="sidebar files">
-                <a href="/home" class="folder active" >
+                <a href="/home" class="folder">
                     <i class="fa-solid fa-house"></i>
                     <h3>home</h3>
                 </a>
-                <a href="/hall" class="" >
+                <a href="/hall" class="active" >
                     <i class="fa-solid fa-table"></i>
                     <h3>hall</h3>
                 </a>
-
                 <a href="/login" id="logout">
                     <span class="material-icons-sharp">
                         logout
@@ -61,32 +60,13 @@
             </div>
         </aside>
         <main>
-            <div class="new-section">
-                <h2>search</h2>
-                <div class="search-list" >
-                    <div>
-                        <input type="text" >
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                    <div class="content">
-                    </div>
-                </div>
-            </div>
-            <div class="new-section">
-                <h2>upload</h2>
-                <div class="section-list" >
-                    <div class="user">
-                        <i class="fa-solid fa-plus"></i>
-                    </div>
-                </div>
-            </div>
-            <svg id="barcode"></svg>
+            <h2>halls</h2>
+            <div class="content"></div>
         </main>
         <!-- End of Main Content -->
 
         <!-- Right Section -->
-        <div class="right-section">
-            
+        <div class="right-section" >
             <div class="nav">
                 <button id="menu-btn">
                     <span class="material-icons-sharp">
@@ -103,30 +83,31 @@
                 </div>
 
                 <div class="profile">
-                        <div class="info">
-                            welcome back <h4 id="user-name"></h4>
-                        </div>
-                        <div class="profile-photo">
-                            <i class="fa-regular fa-user"></i>
-                        </div>
+                    <div class="info">
+                        welcome back <h4 id="user-name"></h4>
+                    </div>
+                    <div class="profile-photo">
+                        <i class="fa-regular fa-user"></i>
+                    </div>
                 </div>
                 <a href="/login" id="login">login</a>
-
             </div>
             <!-- End of Nav -->
-            <div>
-                
+            <div class="report" id="reports">
+                <div>
+                    <h2>reports</h2>
+                </div>
+                <div class="report_content" id="report_content"></div>
             </div>
-
+            <button id="reportBtn">report an issue</button>
         </div>
 
 
     </div>
     <script src="/script/utils/js.cookie.min.js"></script>
     <script src="/script/utils/JsBarcode.all.min.js"></script>
-    <script src="/script/index.js"></script> 
-    <script type="module" src="/script/pages/search.js"></script>
-
+    <script src="/script/index.js"></script>
+    <script type="module" src="/script/pages/hall.js"></script>
 </body>
 
 </html>

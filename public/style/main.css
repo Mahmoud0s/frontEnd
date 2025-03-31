@@ -413,6 +413,7 @@ main .add-user a{
 
 .right-section{
     margin-top: 1.4rem;
+    position: relative;
 }
 
 .right-section .nav , nav{
@@ -530,7 +531,7 @@ main .add-user a{
     border-radius: 50%;
 }
 
-.right-section .allWsInfo .WSInfo{
+.right-section .allWsInfo .WSInfo , .right-section .report{
     background-color: var(--color-white);
     display: flex;
     align-items: center;
@@ -542,7 +543,57 @@ main .add-user a{
     cursor: pointer;
     transition: all 0.3s ease;
 }
+.right-section .report{
+    cursor: unset;
+    flex-direction: column;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.right-section .report .report_content{
+    align-self: flex-start;
+    width: 100%;
 
+}
+.right-section .report ul{
+    list-style: none;
+    align-self: flex-start;
+    padding: 10px 0;
+}
+.report_container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.report_container:not(:last-of-type){
+    border-bottom: 2px dashed var(--color-dark);
+}
+.report_container button{
+    padding: 6px;
+    border-radius: 5px;
+    background-color: var(--color-success);
+    color: var(--color-dark);
+    cursor: pointer;
+}
+#reportBtn{
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--color-info-dark);
+    text-transform: capitalize;
+    background-color: var(--color-warning);
+    color: var(--color-dark-variant);
+    cursor: pointer;
+    font-weight: 600;
+}
+textarea{
+    resize: none;
+    width: 90%;
+    height: 100px;
+    padding: 7px 14px;
+    border-radius: 10px;
+}
 .right-section .allWsInfo .WSInfo:hover{
     box-shadow: none;
 }
@@ -885,7 +936,7 @@ nav .dark-mode{
     font-size: 20px;
     padding-left: 10px;
 }
-
+/* file input */
 input[type="file"]{
     flex: 1;
 }

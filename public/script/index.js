@@ -53,13 +53,14 @@ logoutBtn.addEventListener("click",()=>{
     Cookies.remove("userName");
     Cookies.remove("role");
 })
-
-let addBtn = document.getElementsByClassName("section-list")[0];
-addBtn.addEventListener("click", () => {
-    if(checkUser() && Cookies.get("role")!="admin")
-        location.href="/upload";
-    else
+if(document.getElementsByClassName("section-list")[0]){
+    let addBtn = document.getElementsByClassName("section-list")[0];
+    addBtn.addEventListener("click", () => {
+        if(checkUser() && Cookies.get("role")!="admin")
+            location.href="/upload";
+        else
         location.href="/login";
+        }
+    );
 }
-);
 

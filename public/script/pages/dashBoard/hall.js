@@ -10,16 +10,16 @@ addBtn.addEventListener("click", () => { popUpFun(createPopUp); });
 
 const createWorkSection=document.forms[0];
 
-async function createNewWork(e) {
-    let workSectionName = createWorkSection.querySelector("[name='workSectionName']");    
+async function createNewHall(e) {
+    let hallName = createWorkSection.querySelector("[name='hallName']");    
     let msg = createWorkSection.querySelector(".message");
     
     e.preventDefault();
     const info = {
-        name: workSectionName.value,
+        name: hallName.value,
     };
     try {
-        const response = await fetch("http://localhost:5000/api/work-sections", {
+        const response = await fetch("http://localhost:5000/api/halls/add", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -36,7 +36,7 @@ async function createNewWork(e) {
             msg.textContent = result.message;
             msg.style.color = '#1B9C85';
             content.textContent = "";
-            createTable("workSection");
+            createTable("hall");
         } else {
             msg.textContent = result.message || result.errors[0].msg || 'An error occurred';
             msg.style.color = '#FF0060';
@@ -50,5 +50,5 @@ async function createNewWork(e) {
 }
 
 let form = document.forms[0];
-form.addEventListener("submit", createNewWork);
-document.addEventListener("DOMContentLoaded", createTable("workSection"));
+form.addEventListener("submit", createNewHall);
+document.addEventListener("DOMContentLoaded", createTable("hall"));

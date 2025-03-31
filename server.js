@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const helmet = require('helmet'); // Import helmet
+const helmet = require('helmet'); 
 
 const app = express();
 app.use(express.json());
@@ -41,12 +41,18 @@ app.get("/search/work-section/:WSId",(req,res)=>{
 app.get("/search/:imgId",(req,res)=>{
     res.render("preview-image.ejs")
 })
+app.get("/hall",(req,res)=>{
+    res.render("hall.ejs")
+})
 app.get("/adminDashBoard/",(req,res)=>{
     res.render("dashboardAdmin/dashboard.ejs")
 })
 
 app.get("/adminDashBoard/workSection",(req,res)=>{
     res.render("dashboardAdmin/workSection.ejs")
+})
+app.get("/adminDashBoard/hall",(req,res)=>{
+    res.render("dashboardAdmin/halls.ejs")
 })
 
 app.use((err, req, res, next) => {

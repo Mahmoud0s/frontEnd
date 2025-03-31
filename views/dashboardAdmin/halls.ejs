@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="../style/main.css">
 
-    <title>Responsive Dashboard Design </title>
+    <title>Dashboard</title>
 </head>
 <body>
     <div class="pop-up" id="create-popUp" >
@@ -15,11 +15,11 @@
             <i class="fa-solid fa-xmark"></i>
         </div>
             <div class="popup-content" >
-                <h2>create new work Section</h2>
+                <h2>create new hall</h2>
                 <form>
                     <div>
-                    <h4>work section name</h4>
-                        <input type="text" name="workSectionName">
+                    <h4>hall name</h4>
+                        <input type="text" name="hallName">
                     </div>
                     <div class="message"></div>
                     <div>
@@ -33,16 +33,23 @@
             <i class="fa-solid fa-xmark"></i>
         </div>
         <div class="popup-content">
-            <h2>update workSection</h2>
+            <h2>update hall</h2>
             <form id="updateForm">
                 <div>
                     <h4>ID</h4>
                     <input type="text" name="ID" >
                 </div>
                 <div>
-                    <h4>work section name</h4>
-                        <input type="text" name="name">
-                    </div>
+                    <h4>hall name</h4>
+                    <input type="text" name="name">
+                </div>
+                <div>
+                    <h4>projector state</h4>
+                    <select id="projector_state">
+                        <option value="working">working</option>
+                        <option value="not working">broken</option>
+                    </select>
+                </div>
                 <div class="message"></div>
                 <input type="submit" id="Btn" value="send">
         </div>
@@ -52,7 +59,7 @@
             <i class="fa-solid fa-xmark"></i>
         </div>
         <div class="popup-content">
-            <h2>Delete work Section</h2>
+            <h2>Delete hall</h2>
             <h3 id="msgwarning"></h3>
             <div class="message"></div>
             <div>
@@ -85,13 +92,13 @@
                     </span>
                     <h3>Users</h3>
                 </a>
-                <a href="/adminDashBoard/workSection" class="active">
+                <a href="/adminDashBoard/workSection">
                     <span class="material-icons-sharp">
                         receipt_long
                     </span>
                     <h3>work section</h3>
                 </a>
-                <a href="/adminDashBoard/hall" >
+                <a href="/adminDashBoard/hall" class="active">
                     <span>
                         <i class="fa-solid fa-table"></i>
                     </span>
@@ -170,7 +177,7 @@
             <!-- end Analytics -->
 
             <div class="new-section">
-                <h2>New workSection</h2>
+                <h2>New hall</h2>
                 <div class="section-list" >
                     <div class="user">
                         <i class="fa-solid fa-plus"></i>
@@ -181,7 +188,7 @@
 
             <!-- Recent Orders Table -->
             <div class="add-user">
-                <h2>workSections</h2>
+                <h2>Halls</h2>
                 <div class="content"></div>
             </div>
             <!-- End of Recent Orders -->
@@ -232,7 +239,7 @@
     </div>
     <script src="/script/utils/js.cookie.min.js"></script>
     <script src="/script/pages/dashBoard/index.js"></script>
-    <script type="module" src="/script/pages/dashBoard/workSection.js"></script>
+    <script type="module" src="/script/pages/dashBoard/hall.js"></script>
 </body>
 
 </html>
