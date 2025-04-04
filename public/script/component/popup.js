@@ -160,6 +160,7 @@ async function updateImage(e){
     const fileInput = document.getElementById('file-input');
     const file = fileInput.files[0];
     const idInput = updateForm.querySelector('input[name="ID"]') ;
+    console.log(idInput.value);
     
     if (file) {
         const formData = new FormData();
@@ -167,7 +168,7 @@ async function updateImage(e){
         
         try {
             const response = await fetch(`http://localhost:5000/api/documents/update/${idInput.value}`, {
-                method: 'put',
+                method: 'PUT',
                 headers:{
                     'Authorization': Cookies.get('token')
                 },
@@ -285,4 +286,4 @@ async function getWSInfo(){
 }
 
 
-export {hideAllPopUps , popUpFun ,popUpFunUpdate , confirmFun ,deleteFun ,getWSInfo , updateForm  ,updatePopUp,popUpFunImage}
+export {hideAllPopUps , popUpFun ,popUpFunUpdate , confirmFun ,deleteFun ,getWSInfo , updateForm  ,updatePopUp,popUpFunImage , updateImage}

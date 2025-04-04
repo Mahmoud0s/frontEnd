@@ -150,7 +150,7 @@ async function getData(content,api,page){
                             body: JSON.stringify(credentials),
                             })
                             console.log(await res.json());
-                            if(res.status==403)
+                            if(res.status==403 || res.status==401 )
                                 location.href="/login"
                         }
                     catch(e){
@@ -172,7 +172,7 @@ async function getData(content,api,page){
                             },
                             })
                             console.log(await res.json());
-                            if(res.status==403)
+                            if(res.status==403 || res.status==401)
                                 location.href="/login"
                         }
                     catch(e){

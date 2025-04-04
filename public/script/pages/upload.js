@@ -15,6 +15,7 @@ document.getElementById('file-input').addEventListener('change', function(event)
 });
 
 document.getElementById('upload-button').addEventListener('click', async function() {
+    
     const fileInput = document.getElementById('file-input');
     const file = fileInput.files[0];
     if (file) {

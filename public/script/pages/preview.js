@@ -1,6 +1,6 @@
 
 import {createBarCode} from "/script/component/barcode.js"
-import {hideAllPopUps , popUpFun , updatePopUp , popUpFunImage }  from "/script/component/popup.js";
+import {hideAllPopUps , popUpFun , updatePopUp , popUpFunImage , updateImage }  from "/script/component/popup.js";
 let imgId=location.href.match(/(\d)+/g)[1];
 const img=document.images[1];
 const imgInfo=document.getElementsByClassName("img-info")[0];
@@ -21,10 +21,11 @@ document.getElementById('file-input').addEventListener('change', function(event)
 });
 
 const saveButton = updateForm.querySelector('input[type="submit"]');
-saveButton.addEventListener("click",()=>{
+saveButton.addEventListener("click", async(e)=>{
+     await updateImage(e)
     setTimeout(()=>{
         location.reload()
-    },500)
+    },1000)
 })
 let idInput = updateForm.querySelector('input[name="ID"]');
     idInput.value = location.href.split("/search/")[1];
@@ -35,8 +36,12 @@ let idInput = updateForm.querySelector('input[name="ID"]');
 const updateBtn=document.getElementById("updateBtn");
 updateBtn.addEventListener("click",(e)=>{
     e.preventDefault()
-    updatePopUp.classList.toggle("showPopUp")
-    popUpFunImage(updatePopUp)
+    if(!Cookies.get("token") || Cookies.get("role")=="admin") 
+        location.href="/login" ;
+    else{
+        updatePopUp.classList.toggle("showPopUp")
+        popUpFunImage(updatePopUp)
+    }
     
 })
 
