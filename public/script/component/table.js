@@ -130,6 +130,7 @@ async function getData(content,api,page){
                 //   color
                   if(key=="availability_status"){
                     cell.style.backgroundColor =rowData[key]=="available"?"#1B9C85":"#FF0060"
+                    cell.style.color="#fff"
                   }
               });
               const actionCell = row.insertCell();
@@ -183,7 +184,9 @@ async function getData(content,api,page){
                 const reports = document.createElement("button");
                 reports.innerText = "reports";
                 reports.classList.add("view"); //style
-                reports.addEventListener("click",async ()=>{showReport(rowData.id)})
+                reports.addEventListener("click",async ()=>{
+                    checkUser();
+                    showReport(rowData.id)})
 
                 const changeProjectorState = document.createElement("button");
                 changeProjectorState.innerText = "change projector state";

@@ -44,11 +44,15 @@ async function showReport(id) {
     
                 ul.appendChild(li);
             });
-    
+            // icon 
+            const i = document.createElement("i");
+            i.classList.add("fa-solid", "fa-check")
+            content.appendChild(i)
             content.appendChild(ul); 
     
             // Add "solved" button if there's a problem
             if (thereProblem) {
+                i.classList.replace("fa-check","fa-xmark")
                 let solvedBtn = document.createElement("button");
                 solvedBtn.textContent = "solved";
                 solvedBtn.addEventListener("click", async (e) => {
@@ -61,6 +65,7 @@ async function showReport(id) {
                             },
                         });
                         console.log(await res.json());
+                        location.reload()
                         if(res.status=="403")
                             location.href="/login"
                     } catch (err) {
@@ -110,7 +115,6 @@ async function sendReport(e) {
     const hallID =createPopUp.querySelector("select[name='reportID']")
     const description = createPopUp.querySelector("textarea")
     const msg=createPopUp.querySelector(".message")
-    
     let credentials={
         "hall_id":hallID.value,
         "description":description.value
