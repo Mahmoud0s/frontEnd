@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="style/main.css">
+    <title>serach </title>
+</head>
+<body>
+    <div class="pop-up" id="update-popUp">
+        <div class="close_btn">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div class="popup-content">
+            <h2>update image</h2>
+            <form id="updateForm">
+                <div>
+                    <h4>ID</h4>
+                    <input type="text" name="ID">
+                </div>
+                <div>
+                    <input type="file" accept="image/*" id="file-input">
+                </div>
+                <div>
+                    <img id="image-preview" src="" alt="Image Preview">
+                </div>
+                <div class="message"></div>
+                <input type="submit" id="Btn" value="send">
+        </div>
+    </div>
+    <div class="container">
+        <aside>
+            <div class="toggle">
+                <div>
+                    <h2>Folders<span class="danger"></span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+            <div class="sidebar files">
+                <a href="/home" class="folder active" >
+                    <i class="fa-solid fa-house"></i>
+                    <h3>home</h3>
+                </a>
+                <a href="/hall" class="" >
+                    <i class="fa-solid fa-table"></i>
+                    <h3>hall</h3>
+                </a>
+
+                <a href="/login" id="logout">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <main>
+            <div class="new-section">
+                <h2>search</h2>
+                <div class="search-list" >
+                    <div>
+                        <input type="text" >
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div class="content">
+                    </div>
+                </div>
+            </div>
+            <div class="new-section">
+                <h2>upload</h2>
+                <div class="section-list" >
+                    <div class="user">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+            </div>
+            <svg id="barcode"></svg>
+        </main>
+        <!-- End of Main Content -->
+
+        <!-- Right Section -->
+        <div class="right-section">
+            
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">
+                        menu
+                    </span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">
+                        light_mode
+                    </span>
+                    <span class="material-icons-sharp">
+                        dark_mode
+                    </span>
+                </div>
+
+                <div class="profile">
+                        <div class="info">
+                            welcome back <h4 id="user-name"></h4>
+                        </div>
+                        <div class="profile-photo">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                </div>
+                <a href="/login" id="login">login</a>
+
+            </div>
+            <!-- End of Nav -->
+            <div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+    <script src="/script/utils/js.cookie.min.js"></script>
+    <script src="/script/utils/JsBarcode.all.min.js"></script>
+    <script src="/script/index.js"></script> 
+    <script type="module" src="/script/pages/search.js"></script>
+
+</body>
+
+</html>
