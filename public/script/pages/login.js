@@ -72,7 +72,7 @@ signInButton.addEventListener("click", () => {
     loginContainer.querySelector(".login-form").style.opacity = "1";
     loginContainer.querySelector(".login-form").style.transform =
       "translateY(0)";
-  }, 1000);
+  }, 500);
 });
 
 // Close login form when clicking outside
