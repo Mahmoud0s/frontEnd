@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="assets/images/Portsaid University.svg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="/style/normail.css">
+    <link rel="stylesheet" href="/style/preview.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Image</title>
+</head>
+
+<body>
+    <div class="pop-up" id="update-popUp">
+        <div class="close_btn">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div class="popup-content">
+            <h2>update image</h2>
+            <form id="updateForm">
+                <div>
+                    <h4>ID</h4>
+                    <input type="text" name="ID">
+                </div>
+                <div>
+                    <input type="file" accept="image/*" id="file-input">
+                </div>
+                <div>
+                    <img id="image-preview" src="" alt="Image Preview">
+                </div>
+                <div class="message"></div>
+                <input type="submit" id="Btn" value="send">
+        </div>
+    </div>
+    <div class="preview-container">
+        <div class="barcode-section">
+            <h3>Barcode</h3>
+            <div class="barcode-container"></div>
+        </div>
+        <div class="content-wrapper">
+            <div class="img-preview">
+                <img src="" alt="Image Preview" crossorigin="anonymous">
+            </div>
+            <div class="info-sidebar">
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <span class="status-text">Processing...</span>
+                </div>
+                <ul></ul>
+                <div class="img-info">
+                    <div class="buttons">
+                        <button id="downloadBtn" class="action-btn download-btn">
+                            <i class="fa-solid fa-download"></i> Download
+                        </button>
+                        <button id="printBtn" class="action-btn print-btn">
+                            <i class="fa-solid fa-print"></i> Print
+                        </button>
+                        <button id="updateBtn" class="action-btn update-btn">
+                            <i class="fa-solid fa-edit"></i> Update
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/script/utils/jwt-decode.min.js"></script>
+<script src="/script/utils/js.cookie.min.js"></script>
+<script src="/script/utils/JsBarcode.all.min.js"></script>
+<script type="module" src="/script/pages/preview.js"></script>
+
+</html>

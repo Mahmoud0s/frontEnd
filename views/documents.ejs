@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/Portsaid University.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="style/main.css">
+    <title>Documents</title>
+</head>
+
+<body>
+    <div class="pop-up" id="update-popUp">
+        <div class="close_btn">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div class="popup-content">
+            <h2>update image</h2>
+            <form id="updateForm">
+                <div>
+                    <h4>ID</h4>
+                    <input type="text" name="ID">
+                </div>
+                <div>
+                    <input type="file" accept="image/*" id="file-input">
+                </div>
+                <div>
+                    <img id="image-preview" src="" alt="Image Preview">
+                </div>
+                <div class="message"></div>
+                <input type="submit" id="Btn" value="send">
+        </div>
+    </div>
+    <nav>
+        <div class="navContent">
+            <button id="menu-btn">
+                <span class="material-icons-sharp">
+                    menu
+                </span>
+            </button>
+            <div class="dark-mode">
+                <span class="material-icons-sharp active">
+                    light_mode
+                </span>
+                <span class="material-icons-sharp">
+                    dark_mode
+                </span>
+            </div>
+
+            <div class="profile">
+                <div class="info">
+                    Welcome Back <h4 class="user-name"></h4>
+                </div>
+                <div class="profile-photo">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+            </div>
+            <a href="/login" id="login">login</a>
+
+        </div>
+    </nav>
+    <div class="container">
+        <aside>
+            <div class="toggle">
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <div class="files">
+                    <div class="userInfo">
+                        <div class="profile-photo">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                        <div class="info">
+                            user : <h4 class="user-name"></h4>
+                        </div>
+                    </div>
+                    <a href="/home" class="folder ">
+                        <i class="fa-solid fa-house"></i>
+                        <h3>Home</h3>
+                    </a>
+                    <a href="/hall" class="">
+                        <i class="fa-solid fa-table"></i>
+                        <h3>Hall</h3>
+                    </a>
+                </div>
+                <div class="loginDiv">
+                    <a href="/login" id="logout">
+                        <span class="material-icons-sharp">
+                            logout
+                        </span>
+                        <h3>Logout</h3>
+                    </a>
+                </div>
+            </div>
+        </aside>
+        <main>
+            <div class="new-section">
+                <h2>Search</h2>
+                <div class="search-list">
+                    <div>
+                        <input type="text">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div class="content">
+                    </div>
+                    <div class="btn-box">
+                        <h2>page : <span id="pageNumber">0</span></h2>
+                        <button><i class="fa-solid fa-angle-left"></i></button>
+                        <button><i class="fa-solid fa-angle-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="new-section">
+                <h2>Upload</h2>
+                <div class="section-list">
+                    <div class="user">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+            </div>
+            <svg id="barcode"></svg>
+        </main>
+        <!-- End of Main Content -->
+
+        <!-- Right Section -->
+        <div class="right-section">
+
+            <div class="user-profile">
+                <div class="logo">
+                    <img src="/assets/images/Portsaid University.svg">
+                    <div>
+                        <h2>Port Said University</h2>
+                        <p>Faculty Of Science</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <script src="/script/utils/jwt-decode.min.js"></script>
+    <script src="/script/utils/js.cookie.min.js"></script>
+    <script src="/script/utils/JsBarcode.all.min.js"></script>
+    <script src="/script/index.js"></script>
+    <script type="module" src="/script/pages/search.js"></script>
+    <script type="module" src="/script/pages/section.js"></script>
+
+</body>
+
+</html>

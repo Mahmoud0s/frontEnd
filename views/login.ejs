@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/normail.css">
+    <link rel="stylesheet" href="style/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+            <img src="assets/images/Portsaid University.svg">
+        <nav>
+            <ul>
+                <li><a href="/home">home</a></li>
+                <li><a href="/aboutUs">about us</a></li>
+                <li><a href="/documents">documents</a></li>
+                <li><a href="/hall">hall</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="banner">
+            <div>
+                <h1 class="left">Developing an application with Management</h1>
+                <h1 class="right">and Maintenance the College Laboratories</h1>
+            </div>
+            <h4>
+                lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+                <br>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam ea saepe quam quo laborum sequi.
+                Ipsum alias sint quia sed.
+            </h4>
+            <button>Sign In</button>
+
+            <canvas id="dotsCanvas"></canvas>
+        </div>
+
+        <!-- Login Form -->
+        <div class="login-container" id="loginForm">
+            <div class="login-form">
+                <h2>Login</h2>
+                <form>
+                    <div class="form-group">
+                        <input type="text" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group remember-me">
+                        <input type="checkbox" id="remeberMe">
+                        <label for="remeberMe">Remember me</label>
+                    </div>
+                    <div id="loading" class="hideMe">
+                        <div class="one"></div>
+                        <div class="two"></div>
+                        <div class="three"></div>
+                    </div>
+                <div class="message"></div>
+                    <input type="submit" class="login-btn" value="sign in"></input>
+                </form>
+            </div>
+        </div>
+    </main>
+
+</body>
+<script src="script/utils/jwt-decode.min.js"></script>
+<script src="script/utils/js.cookie.min.js"></script>
+<script type="module"  src="script/pages/login.js"></script> 
+
+</html>
