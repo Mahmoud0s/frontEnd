@@ -14,14 +14,18 @@ getAllHalls()
 let buttonBox=document.querySelector(".btn-box");
 let back=buttonBox.querySelector("button:first-of-type")
 let next=buttonBox.querySelector("button:last-of-type")
-let pageNum=1;
+let hallNum=+ sessionStorage.getItem("hall") || 1;
 back.addEventListener("click",(e)=>{
     e.preventDefault();
-        getData(document.querySelector(".content"),`http://localhost:5000/api/halls/all`,"hall",--pageNum)
+        hallNum = Math.max(1, hallNum - 1);
+        sessionStorage.setItem("hall", hallNum);
+        getData(document.querySelector(".content"),`http://localhost:5000/api/halls/all`,"hall",hallNum)
 })
 next.addEventListener("click",(e)=>{
     e.preventDefault();
-        getData(document.querySelector(".content"),`http://localhost:5000/api/halls/all`,"hall",++pageNum)
+        hallNum += 1;
+        sessionStorage.setItem("hall", hallNum);
+        getData(document.querySelector(".content"),`http://localhost:5000/api/halls/all`,"hall",hallNum)
 })
 
 let createUserForm = document.forms[0];

@@ -91,15 +91,37 @@ async function createTable(page) {
     content.appendChild(table);
   }
 }
-//home /search //hall
+
+
 async function getData(content, api, page, pageNum = 1 ) {
   content.textContent = "";
+  
+  let pageID=+location.href.split("work-section/")[1];
+
+  if (page=="search") {
+    pageNum=+pageNum || 1;
+  }else if(page=="hall" && sessionStorage.getItem("hall")){
+    pageNum=+sessionStorage.getItem("hall")||1;
+
+  }else{
+    pageNum=+sessionStorage.getItem(pageID) || 1;
+  }
+
   try {
+
+    let limit=10;
+    let skip=(pageNum-1)*limit
+
     const response = await fetch(api);
     const allData = await response.json();
-    let limit=7;
-    let skip=(pageNum-1)*limit
-    let data=response.ok?allData.slice(skip,skip+limit):allData ;
+
+    let data=response.ok?allData.slice(skip,skip+limit):allData;
+    
+    if(page=="hall"){
+      sessionStorage.setItem("hall",pageNum);
+    }else if(page!="search"){
+      sessionStorage.setItem(pageID,pageNum);
+    }
     document.querySelector("#pageNumber").textContent=pageNum;
     document.querySelectorAll(".btn-box , .btn-box h2").forEach((el)=>{
         el.style.display=response.ok && allData.length!=0?"block":"none"
@@ -218,7 +240,7 @@ async function getData(content, api, page, pageNum = 1 ) {
             '<i class="fa-solid fa-clipboard-list"></i>Reports';
           reports.classList.add("view");
           reports.addEventListener("click", async () => {
-            checkUser();
+            // checkUser();
             showReport(rowData.id);
           });
 

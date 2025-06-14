@@ -5,7 +5,7 @@ canvas.height = canvas.offsetHeight;
 const ctx = canvas.getContext("2d");
 const dots = [];
 const arrayColors = ["#eee", "#545454", "#596d91", "#bb5a68", "#696541"];
-for (let index = 0; index < 20; index++) {
+for (let index = 0; index <30; index++) {
   dots.push({
     x: Math.floor(Math.random() * canvas.width),
     y: Math.floor(Math.random() * canvas.height),
@@ -97,15 +97,11 @@ const message = form.querySelector(".message");
 const lodingForm=form.querySelector("#loading");
 
 
-if (Cookies.get("userName")) {    
+if (Cookies.get("userName") && localStorage.getItem("RMbox") === "true") {    
     userName.value = Cookies.get("userName");
-    password.value = Cookies.get("password");
     checkBox.checked = true;
 }
-localStorage.setItem("RMbox",checkBox.checked);
-
 if(Cookies.get("token") && localStorage.getItem("RMbox")=="true"){
-    
     location.href=Cookies.get("role")=="user"?"home":"adminDashBoard"
 }
 form.addEventListener("submit", async (e) => {
@@ -126,39 +122,39 @@ form.addEventListener("submit", async (e) => {
             });
             
             const data = await response.json();
+            setTimeout(()=>{
             // stop loading animation
-            lodingForm.classList.toggle("hideMe");
+            lodingForm.classList.toggle("hideMe")
             if (response.ok) {
-                message.textContent=""
-                // checkBox
-                if (checkBox.checked) {
-                    localStorage.setItem("RMbox",true)
-                }
-                Cookies.set('userName',userName.value, {
-                    expires: 7, 
-                    secure: true,
-                    sameSite: 'strict'
-                });
-                Cookies.set('token',data.token, {
-                    expires: 7, 
-                    secure: true,
-                    sameSite: 'strict'
-                });
-                Cookies.set("role",data.role,{
-                    expires: 7, 
-                    secure: true,
-                    sameSite: 'strict'
-                })
-                
-                window.location.href= data.role=="admin"? "/adminDashBoard" : "/home"
- 
+              message.textContent=""
+              // checkBox
+              localStorage.setItem("RMbox", checkBox.checked ? "true" : "false");
+
+              Cookies.set('userName',userName.value, {
+                expires: 7, 
+                secure: true,
+                sameSite: 'strict'
+              });
+              Cookies.set('token',data.token, {
+                expires: 7, 
+                secure: true,
+                sameSite: 'strict'
+              });
+              Cookies.set("role",data.role,{
+                expires: 7, 
+                secure: true,
+                sameSite: 'strict'
+              })
+              
+              window.location.href= data.role=="admin"? "/adminDashBoard" : "/home"
             } else {
-                message.textContent = data.message || "Login failed";
-                message.style.color = "red";
+              message.textContent = data.message || "Login failed";
+              message.style.color = "red";
             }
-        } catch (error) {
+          },2000)
+          } catch (error) {
             message.textContent = "An error occurred. Please try again later.";
             message.style.color = "red";
-        }
-})
-    
+          }
+        })
+        

@@ -52,6 +52,8 @@ logoutBtn.addEventListener("click",()=>{
     Cookies.remove("token");
     Cookies.remove("userName");
     Cookies.remove("role");
+    sessionStorage.clear()
+    localStorage.clear()
 })
 if(document.getElementsByClassName("section-list")[0]){
     let addBtn = document.getElementsByClassName("section-list")[0];

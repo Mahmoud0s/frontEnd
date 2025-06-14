@@ -330,3 +330,40 @@ h1.right{
     }
 }
 
+#loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0px;
+}
+#loading div {
+    display: inline-block;
+    position: relative;
+    width: 15px;
+    height: 15px;
+    margin: 1px;
+    background-color: #fff;
+    border-radius: 50%;
+    animation-name: loading;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+#loading .two {
+    animation-delay:.5s;
+}
+#loading .three {
+    animation-delay:1s;
+}
+
+@keyframes loading{
+    to{
+        background-color: #444243;
+        transform:translateY(-20px);
+        opacity: 0.5;
+    }
+}
+#loading.hideMe{
+    display: none;
+}

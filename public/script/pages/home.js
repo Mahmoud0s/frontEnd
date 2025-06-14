@@ -56,14 +56,19 @@ try {
 let buttonBox=document.querySelector(".btn-box");
 let back=buttonBox.querySelector("button:first-of-type")
 let next=buttonBox.querySelector("button:last-of-type")
-let pageNum=1;
+let pageID=+location.href.split("work-section/")[1];
+let pageNum =+sessionStorage.getItem(pageID) || 1 ;
 back.addEventListener("click",(e)=>{
     e.preventDefault();
-        getData(document.querySelector(".content"),`http://localhost:5000/api/search/work-section/${section}`," ",--pageNum)
+        pageNum = Math.max(1, pageNum - 1);
+          sessionStorage.setItem(pageID, pageNum);
+        getData(document.querySelector(".content"),`http://localhost:5000/api/search/work-section/${section}`," ",pageNum)
 })
 next.addEventListener("click",(e)=>{
     e.preventDefault();
-        getData(document.querySelector(".content"),`http://localhost:5000/api/search/work-section/${section}`," ",++pageNum)
+        pageNum += 1;
+        sessionStorage.setItem(pageID, pageNum);
+        getData(document.querySelector(".content"),`http://localhost:5000/api/search/work-section/${section}`," ",pageNum)
 })
 
 

@@ -17,7 +17,7 @@ let searchBox=document.getElementsByClassName("search-list")[0];
 let input = searchBox.querySelector("input");
 
 let content=searchBox.querySelector("div.content");
-searchBox.addEventListener("input" ,()=> { getData(content,`http://localhost:5000/api/search/search?query=${input.value}`)})
+searchBox.addEventListener("input" ,()=> { getData(content,`http://localhost:5000/api/search/search?query=${input.value}`,"search")})
 
 //buttons
 
@@ -28,11 +28,13 @@ let pageNum=1;
 
 back.addEventListener("click",(e)=>{
     e.preventDefault();
-        getData(content,`http://localhost:5000/api/search/search?query=${input.value}`," ",--pageNum)
+        pageNum = Math.max(1, pageNum - 1)
+        getData(content,`http://localhost:5000/api/search/search?query=${input.value}`,"search",pageNum)
 })
 next.addEventListener("click",(e)=>{
     e.preventDefault();
-        getData(content,`http://localhost:5000/api/search/search?query=${input.value}`," ",++pageNum)
+        pageNum +=1;
+        getData(content,`http://localhost:5000/api/search/search?query=${input.value}`,"search",pageNum)
 })
 
 
