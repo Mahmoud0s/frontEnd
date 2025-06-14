@@ -81,7 +81,6 @@ async function saveFun(e){
     const name = updateForm.querySelector('input[name="name"]');
     const idInput = updateForm.querySelector('input[name="ID"]');
     let page;
-    // gonna change soon
     if(updateForm.children.length==7)
         page="user";
     else if(updateForm.children.length==5)
